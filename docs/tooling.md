@@ -10,7 +10,7 @@ What's in use, what connects, and where the gaps are. Answers the Phase 2 questi
 | Website | arceostudiocollective.com | — |
 | Booking | **Acuity Scheduling** | **Good.** Real API and webhooks. Appointments can be read, created, and rescheduled programmatically. |
 | Galleries and delivery | **PASS (Pass Gallery)** | **Partial.** Handles ordering and lab fulfillment. API is limited — expect manual or semi-manual for some steps. |
-| In-person card payments | **Chase DX8000 terminal** | **Poor. This is the real gap — see below.** |
+| In-person card payments | **Chase DX8000 terminal** | **Manual by design.** Orders captured on a written form. See below. |
 | Print fulfillment | **Bay Photo**, ordered manually, or automatically via PASS | **Fixable.** |
 
 The back half exists. That's better than starting from nothing and it means Phase 2 is
@@ -66,8 +66,8 @@ Calendar. Nothing new required.
 **Phase 2a — Acuity.** Booking watch, prep briefs, run sheets, confirmations, capacity
 checks. Biggest immediate win, one integration.
 
-**Phase 2b — fix payment capture.** Option 2 above. Blocks commission, P&L, and conversion
-reporting; everything downstream waits on it.
+**Phase 2b — settle the order form.** Fields fixed and collected centrally, so commission,
+segment P&L and per-photographer conversion are all computable from one source.
 
 **Phase 2c — PASS integration and automated Bay Photo ordering.** Removes the manual step
 that scales with volume.
