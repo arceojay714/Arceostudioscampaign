@@ -17,8 +17,8 @@ on-site work impossible and Shutterfly declined to restart it — not because th
 stopped working.
 
 So the model is proven, the incumbent is gone, and the buyers still understand the offer.
-That's an unusually good position. The risk isn't the idea. It's the two places this shape
-of business reliably breaks.
+That's an unusually good position, and with a trained roster that sells in person, most of
+what normally sinks this shape of business is already handled.
 
 ## The model as it actually stands
 
@@ -76,8 +76,7 @@ The division of labor is the whole reason this scales:
 | Shooting | **Local photographer.** |
 | Retouching | **Central.** |
 | Sales | **Local photographer, in person, at the session.** |
-| Order processing and fulfilment | **Central.** |
-| Fulfillment and print | **Central.** |
+| Order processing, print and fulfilment | **Central.** |
 | Client relationship | **Central**, with the photographer as the face on the day. |
 
 Photographers shoot and sell. They should not have to prospect, quote, chase payment, or
