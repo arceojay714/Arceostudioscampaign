@@ -1,0 +1,707 @@
+<title>Pictorial Directory Program — Proposal Preview</title>
+<style>
+  :root{
+    --paper:#F5F3EF; --sheet:#FFFDFA; --ink:#1A2129; --ink-soft:#4A5560;
+    --muted:#6E7883; --rule:#DDD8D0; --rule-soft:#E9E5DE;
+    --slate:#2B3A47; --brass:#8A6626; --brass-soft:#B08B45;
+    --fill:#F0EDE7;
+    --shadow:0 1px 2px rgba(26,33,41,.05), 0 12px 32px -12px rgba(26,33,41,.16);
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#12171C; --sheet:#1A2128; --ink:#E9E6E0; --ink-soft:#B6BDC5;
+      --muted:#8B959F; --rule:#2E3841; --rule-soft:#252E36;
+      --slate:#8FA7BC; --brass:#C9A05E; --brass-soft:#D9B87E;
+      --fill:#212A32;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12171C; --sheet:#1A2128; --ink:#E9E6E0; --ink-soft:#B6BDC5;
+    --muted:#8B959F; --rule:#2E3841; --rule-soft:#252E36;
+    --slate:#8FA7BC; --brass:#C9A05E; --brass-soft:#D9B87E;
+    --fill:#212A32;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"]{
+    --paper:#F5F3EF; --sheet:#FFFDFA; --ink:#1A2129; --ink-soft:#4A5560;
+    --muted:#6E7883; --rule:#DDD8D0; --rule-soft:#E9E5DE;
+    --slate:#2B3A47; --brass:#8A6626; --brass-soft:#B08B45;
+    --fill:#F0EDE7;
+    --shadow:0 1px 2px rgba(26,33,41,.05), 0 12px 32px -12px rgba(26,33,41,.16);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:17px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:60rem; margin:0 auto; padding:2.5rem 1.25rem 5rem;
+        display:flex; flex-direction:column; gap:2rem}
+
+  /* ---- preview banner ---- */
+  .banner{
+    border:1px solid var(--rule); border-left:3px solid var(--brass);
+    background:var(--sheet); border-radius:2px; padding:1.15rem 1.35rem;
+    display:flex; flex-direction:column; gap:.4rem; box-shadow:var(--shadow);
+  }
+  .banner h1{
+    font-size:1.05rem; margin:0; font-weight:600; letter-spacing:.01em;
+    text-wrap:balance;
+  }
+  .banner p{margin:0; font-size:.92rem; color:var(--ink-soft); max-width:62ch}
+  .banner code{
+    font-family:var(--sans); font-size:.82em; background:var(--fill);
+    padding:.1em .4em; border-radius:2px; color:var(--brass);
+  }
+
+  /* ---- sheet ---- */
+  .sheet{
+    background:var(--sheet); border:1px solid var(--rule); border-radius:2px;
+    box-shadow:var(--shadow); padding:3rem 3.25rem 2rem;
+    display:flex; flex-direction:column; min-height:0;
+  }
+  @media(max-width:640px){ .sheet{padding:2rem 1.5rem 1.5rem} }
+
+  .runhead{
+    display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+    padding-bottom:.9rem; border-bottom:1px solid var(--rule-soft); margin-bottom:2.25rem;
+  }
+  .runhead .mark{font-size:.9rem; font-style:italic; color:var(--ink-soft)}
+  .runfoot{
+    margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--rule-soft);
+    display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+  }
+
+  .eyebrow{
+    font-family:var(--sans); font-size:.68rem; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+  }
+  .eyebrow.brass{color:var(--brass)}
+
+  h2.title{
+    font-size:2.35rem; line-height:1.12; margin:.15rem 0 0; font-weight:400;
+    letter-spacing:-.015em; text-wrap:balance;
+  }
+  h3{
+    font-size:1.28rem; font-weight:600; margin:0 0 .3rem; line-height:1.3;
+    text-wrap:balance;
+  }
+  h4{font-size:1.02rem; font-weight:600; margin:0 0 .15rem}
+  p{margin:0; max-width:68ch}
+  .lede{font-size:1.1rem; color:var(--ink-soft); max-width:60ch}
+  .dim{color:var(--ink-soft)}
+  .small{font-size:.93rem}
+
+  section.block{display:flex; flex-direction:column; gap:.55rem; margin-bottom:2.25rem}
+  section.block:last-of-type{margin-bottom:0}
+
+  /* placeholder token */
+  .ph{
+    color:var(--brass); font-family:var(--sans); font-weight:600;
+    font-size:.86em; letter-spacing:.02em; background:var(--fill);
+    padding:.08em .38em; border-radius:2px; white-space:nowrap;
+  }
+
+  /* item list */
+  .items{display:flex; flex-direction:column; gap:1rem; margin:0; padding:0; list-style:none}
+  .items li{display:flex; flex-direction:column; gap:.12rem}
+  .items li p{font-size:.95rem; color:var(--ink-soft)}
+
+  /* cover */
+  .cover{padding-top:4.5rem; padding-bottom:3rem}
+  .cover .brandline{
+    font-size:.95rem; font-style:italic; color:var(--ink-soft); margin-bottom:3.5rem;
+  }
+  .cover h2.title{font-size:3rem; margin-top:.4rem}
+  .cover .sub{font-size:1.15rem; color:var(--ink-soft); margin-top:1.1rem; max-width:46ch}
+  .credits{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+    gap:1.75rem; margin-top:4.5rem; padding-top:1.5rem; border-top:1px solid var(--rule-soft);
+  }
+  .credits div{display:flex; flex-direction:column; gap:.28rem}
+  .credits .who{font-size:1.02rem}
+
+  /* steps */
+  .steps{display:flex; flex-direction:column; gap:0; margin:0; padding:0; list-style:none;
+         counter-reset:step}
+  .steps li{
+    display:grid; grid-template-columns:2.4rem 1fr; gap:1rem; align-items:start;
+    padding:.95rem 0; border-bottom:1px solid var(--rule-soft);
+  }
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{
+    counter-increment:step; content:counter(step);
+    font-family:var(--sans); font-size:.75rem; font-weight:700; letter-spacing:.04em;
+    color:var(--brass); background:var(--fill); border-radius:2px;
+    width:1.7rem; height:1.7rem; display:grid; place-items:center; margin-top:.15rem;
+  }
+
+  /* lettered options */
+  .opts{display:flex; flex-direction:column; gap:0; margin:0; padding:0; list-style:none;
+        counter-reset:opt}
+  .opts li{
+    display:grid; grid-template-columns:2.4rem 1fr; gap:1rem; align-items:start;
+    padding:.9rem 0; border-bottom:1px solid var(--rule-soft);
+  }
+  .opts li:last-child{border-bottom:0}
+  .opts li::before{
+    counter-increment:opt; content:counter(opt,upper-alpha);
+    font-family:var(--sans); font-size:.75rem; font-weight:700;
+    color:var(--slate); border:1px solid var(--rule);
+    width:1.7rem; height:1.7rem; display:grid; place-items:center; margin-top:.15rem;
+    border-radius:2px;
+  }
+  .tag{
+    font-family:var(--sans); font-size:.62rem; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--brass); border:1px solid var(--brass-soft);
+    padding:.1rem .4rem; border-radius:2px; margin-left:.55rem; vertical-align:.12em;
+    white-space:nowrap;
+  }
+
+  /* checks */
+  .checks{display:flex; flex-direction:column; gap:.7rem; margin:0; padding:0; list-style:none}
+  .checks li{display:grid; grid-template-columns:1.4rem 1fr; gap:.7rem; align-items:start}
+  .checks li::before{
+    content:"✓"; color:var(--brass); font-weight:700; font-size:.95rem; margin-top:.08rem;
+  }
+
+  /* portrait frames */
+  .frames{display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); gap:1.25rem}
+  .frame{display:flex; flex-direction:column; gap:.55rem}
+  .plate{
+    aspect-ratio:2/3; border-radius:2px; border:1px solid var(--rule);
+    display:grid; place-items:center; text-align:center; padding:1rem;
+    background:
+      radial-gradient(ellipse 62% 46% at 50% 30%, rgba(150,178,200,.30), transparent 70%),
+      radial-gradient(ellipse 80% 60% at 22% 82%, rgba(10,18,26,.55), transparent 72%),
+      radial-gradient(ellipse 120% 100% at 50% 40%, #3B5064 0%, #2B3A47 48%, #17212A 100%);
+  }
+  .plate span{
+    font-family:var(--sans); font-size:.64rem; font-weight:600; letter-spacing:.14em;
+    text-transform:uppercase; color:rgba(233,236,240,.72); line-height:1.7;
+  }
+  .frame .cap{
+    font-family:var(--sans); font-size:.66rem; font-weight:600; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--muted);
+  }
+
+  /* asks / two-col */
+  .cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1.5rem}
+
+  /* experience */
+  .regions{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.75rem}
+  .regions ul{margin:.5rem 0 0; padding:0; list-style:none;
+              display:flex; flex-direction:column; gap:.28rem; font-size:.95rem}
+  .refs{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1.5rem}
+  .refs a{color:var(--brass); text-decoration:none; border-bottom:1px solid var(--rule)}
+  .refs a:hover, .refs a:focus-visible{border-bottom-color:var(--brass)}
+  .signoff{
+    margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--rule-soft);
+    display:flex; flex-direction:column; gap:.5rem;
+  }
+  .contact{
+    font-family:var(--sans); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted); line-height:2;
+  }
+
+  .callout{
+    background:var(--fill); border-left:2px solid var(--brass);
+    padding:1.1rem 1.35rem; border-radius:0 2px 2px 0;
+    display:flex; flex-direction:column; gap:.35rem;
+  }
+
+  /* variants panel */
+  .variants{
+    border:1px dashed var(--rule); border-radius:2px; background:transparent;
+    padding:2rem 2.25rem; display:flex; flex-direction:column; gap:1.5rem;
+  }
+  @media(max-width:640px){ .variants{padding:1.5rem 1.25rem} }
+  .vgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:1.75rem}
+  .vgrid ul{margin:.5rem 0 0; padding-left:1.05rem;
+            display:flex; flex-direction:column; gap:.4rem; font-size:.94rem; color:var(--ink-soft)}
+
+  a:focus-visible, [tabindex]:focus-visible{outline:2px solid var(--brass); outline-offset:3px}
+</style>
+
+<div class="wrap">
+
+  <div class="banner">
+    <span class="eyebrow brass">Preview, not final</span>
+    <h1>Pictorial Directory Program — church version</h1>
+    <p>Structure follows the Los Altos deck. Fill-in fields show as <span class="ph">[LIKE THIS]</span>.
+       The three portrait plates are sized to the real crops and stand in for the senior portraits,
+       which replace the club images. Senior living and 55+ variants are noted at the foot of the page.</p>
+  </div>
+
+  <!-- ========== 1. COVER ========== -->
+  <div class="sheet cover">
+    <div class="brandline">Arceo Studio Collective</div>
+    <span class="eyebrow">Pictorial Directory Program</span>
+    <h2 class="title">The <span class="ph">[CHURCH NAME]</span><br>Directory Program</h2>
+    <p class="sub">A fully managed pictorial directory, at no cost to the church and no cost
+       to its members, shaped around <span class="ph">[CHURCH NAME]</span> and its congregation.</p>
+
+    <div class="credits">
+      <div>
+        <span class="eyebrow">Prepared for</span>
+        <span class="who"><span class="ph">[NAME]</span></span>
+        <span class="small dim"><span class="ph">[ROLE]</span> and the church office</span>
+      </div>
+      <div>
+        <span class="eyebrow">Prepared by</span>
+        <span class="who">Julian Arceo</span>
+        <span class="small dim">Arceo Studio Collective</span>
+      </div>
+      <div>
+        <span class="eyebrow">Date</span>
+        <span class="who"><span class="ph">[MONTH YEAR]</span></span>
+      </div>
+    </div>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 1 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== 2. THE PROGRAM ========== -->
+  <div class="sheet">
+    <div class="runhead">
+      <span class="mark">Arceo Studio Collective</span>
+      <span class="eyebrow"><span class="ph">[CHURCH]</span> Directory Program</span>
+    </div>
+
+    <section class="block">
+      <span class="eyebrow">What this is</span>
+      <h2 class="title">The program</h2>
+      <p class="lede">A directory program that runs start to finish without cost or work
+         for the church.</p>
+    </section>
+
+    <section class="block">
+      <div class="callout">
+        <h4>Most congregations are overdue, and it is not their fault</h4>
+        <p class="small dim">The company that photographed church directories for most of
+           the country closed its church division in 2021. A great many congregations have
+           not been able to refresh a directory since, even though the usual cycle is two
+           to three years.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <ul class="items">
+        <li>
+          <h4>No cost to the church</h4>
+          <p>The studio covers its own setup, staffing, editing, and production.
+             There is no fee to run the program.</p>
+        </li>
+        <li>
+          <h4>No cost to members</h4>
+          <p>Sitting for a portrait is free, and so is the finished portrait each
+             participant takes home.</p>
+        </li>
+        <li>
+          <h4>A complimentary portrait for everyone who participates</h4>
+          <p>It is the church's gift to the member, and it tends to be the main reason
+             people take part.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">How the program is funded</span>
+      <h3>What members pay for, and what they do not</h3>
+      <p class="small dim">Since the program costs the church and its members nothing, here is how
+         it works. Members who would like additional prints or pieces for their homes can
+         purchase them, with options starting around $150, and there is never any pressure
+         or obligation. Most members buy more because they enjoy the experience, not because
+         they were sold. Every participant keeps a complimentary portrait at no charge
+         either way.</p>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">Almost no lift on your side</span>
+      <p class="small dim">The studio handles scheduling, setup, the sessions, editing, and
+         delivery. Reaching out to the congregation stays entirely in the church's hands, and
+         a short note from the office alongside the complimentary portrait is usually enough
+         to drive strong participation.</p>
+    </section>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 2 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== 3. DELIVERABLES ========== -->
+  <div class="sheet">
+    <div class="runhead">
+      <span class="mark">Arceo Studio Collective</span>
+      <span class="eyebrow"><span class="ph">[CHURCH]</span> Directory Program</span>
+    </div>
+
+    <section class="block">
+      <span class="eyebrow">Deliverables</span>
+      <h2 class="title">What is included</h2>
+      <p class="lede">What <span class="ph">[CHURCH NAME]</span> receives.</p>
+    </section>
+
+    <section class="block">
+      <ul class="items">
+        <li>
+          <h4>Finished portraits, formatted for the directory</h4>
+          <p>Sized and formatted for the printed directory and the online version.</p>
+        </li>
+        <li>
+          <h4>A complimentary finished portrait for every participant</h4>
+          <p>The member's to keep, given as the church's gift.</p>
+        </li>
+        <li>
+          <h4>Clergy and staff portraits</h4>
+          <p>Refreshed portraits for the pastoral team and church staff, formatted for
+             displays and the website.</p>
+        </li>
+        <li>
+          <h4>Ministry and committee groups</h4>
+          <p>Group portraits for choirs, ministries, and committees that meet inside
+             the window.</p>
+        </li>
+        <li>
+          <h4>Welcome booklets</h4>
+          <p>Booklets featuring clergy, staff, and leadership, so new members can put
+             names to faces from their first Sunday.</p>
+        </li>
+        <li>
+          <h4>Service and event coverage</h4>
+          <p>Services and church events that fall inside the window, photographed and
+             ready for the church's own use.</p>
+        </li>
+        <li>
+          <h4>Campus and facility imagery</h4>
+          <p>Updated images of the sanctuary, the hall, and the church's spaces.</p>
+        </li>
+        <li>
+          <h4>Weekly status updates</h4>
+          <p>Sent to the church office throughout the program, so nothing is a surprise.</p>
+        </li>
+        <li>
+          <h4>A private online gallery, kept for the congregation</h4>
+          <p>Easy to revisit and order from, delivered on a one-week turnaround.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">Tailored to the church</span>
+      <p class="small dim">Background color, formatting, and session flow are all set to the
+         church's preferences before the first session. <span class="ph">[CHURCH NAME]</span>
+         signs off on the look before anything begins.</p>
+    </section>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 3 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== 4. RECENT WORK ========== -->
+  <div class="sheet">
+    <div class="runhead">
+      <span class="mark">Arceo Studio Collective</span>
+      <span class="eyebrow"><span class="ph">[CHURCH]</span> Directory Program</span>
+    </div>
+
+    <section class="block">
+      <span class="eyebrow">A look at the portraits</span>
+      <h2 class="title">Recent work</h2>
+    </section>
+
+    <section class="block">
+      <div class="frames">
+        <div class="frame">
+          <div class="plate"><span>Portrait<br>goes here</span></div>
+          <span class="cap">Individual portrait</span>
+        </div>
+        <div class="frame">
+          <div class="plate"><span>Portrait<br>goes here</span></div>
+          <span class="cap">Couple portrait</span>
+        </div>
+        <div class="frame">
+          <div class="plate"><span>Portrait<br>goes here</span></div>
+          <span class="cap">Family portrait</span>
+        </div>
+      </div>
+      <p class="small dim" style="margin-top:.4rem">Every session is directed start to finish, so
+         members look composed and intentional rather than rushed, and they are welcome to sit
+         on their own or bring family. The quality is the same whether it is a single portrait
+         or the whole family.</p>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">Backgrounds are yours to choose</span>
+      <p class="small dim">The looks on this page are only examples. Background color is set to
+         whatever <span class="ph">[CHURCH NAME]</span> prefers, from a clean neutral to a
+         church color or a custom backdrop, and locked in before the program begins.</p>
+    </section>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 4 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== 5. HOW IT WORKS ========== -->
+  <div class="sheet">
+    <div class="runhead">
+      <span class="mark">Arceo Studio Collective</span>
+      <span class="eyebrow"><span class="ph">[CHURCH]</span> Directory Program</span>
+    </div>
+
+    <section class="block">
+      <span class="eyebrow">The residency</span>
+      <h2 class="title">How it works</h2>
+      <p class="lede">A simple path, start to finish.</p>
+      <p class="small dim">We set aside a four to six week period at the church and work through
+         the congregation during that time. There is no fixed date to commit to, so the window
+         is built around what works for <span class="ph">[CHURCH NAME]</span>. Members opt in
+         and book on their own time, and the church sets the pace.</p>
+    </section>
+
+    <section class="block">
+      <ol class="steps">
+        <li><div><h4>The church announces</h4>
+          <p class="small dim">A short rollout through the church's own approved channels.</p></div></li>
+        <li><div><h4>Members opt in</h4>
+          <p class="small dim">They book on their own time. No cold calls needed.</p></div></li>
+        <li><div><h4>The session</h4>
+          <p class="small dim">Guided and unhurried, held on the church campus. Families welcome.</p></div></li>
+        <li><div><h4>The gift</h4>
+          <p class="small dim">A complimentary portrait and a private online gallery the member keeps.</p></div></li>
+        <li><div><h4>Delivered</h4>
+          <p class="small dim">Directory images, on a one-week turnaround.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">What we ask of the church</span>
+      <div class="cols">
+        <div>
+          <h4>A short announcement</h4>
+          <p class="small dim">A note from the office letting members know the program is
+             coming and that it helps the church.</p>
+        </div>
+        <div>
+          <h4>A comfortable on-site room</h4>
+          <p class="small dim">A quiet space on campus for the sessions during the window.</p>
+        </div>
+        <div>
+          <h4>One staff contact</h4>
+          <p class="small dim">A single point of contact to coordinate logistics with the studio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="callout">
+        <h4>No roster required</h4>
+        <p class="small dim">Members reach out and book on their own, so the church never has to
+           hand over a membership list. Everything else, from setup through delivery, sits
+           with the studio.</p>
+      </div>
+    </section>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 5 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== 6. INTAKE ========== -->
+  <div class="sheet">
+    <div class="runhead">
+      <span class="mark">Arceo Studio Collective</span>
+      <span class="eyebrow"><span class="ph">[CHURCH]</span> Directory Program</span>
+    </div>
+
+    <section class="block">
+      <span class="eyebrow">Member intake, the church's choice</span>
+      <h2 class="title">How members hear<br>about it is up to you</h2>
+      <p class="small dim">Reaching members stays entirely with the church. Layer the methods that
+         fit <span class="ph">[CHURCH NAME]</span>. Most congregations start with the first
+         option and add from there, and none of it requires handing over a member list.</p>
+    </section>
+
+    <section class="block">
+      <ol class="opts">
+        <li><div><h4>Email series with a private booking link<span class="tag">Recommended</span></h4>
+          <p class="small dim">The highest participation across our programs.</p></div></li>
+        <li><div><h4>Bulletin and narthex signage</h4>
+          <p class="small dim">A quiet reminder where members already gather, with minimal
+             staff lift.</p></div></li>
+        <li><div><h4>Mailed invitation</h4>
+          <p class="small dim">Reaches members who prefer mail to digital.</p></div></li>
+        <li><div><h4>A sign-up table after services</h4>
+          <p class="small dim">Captures interest in the moment, face to face.</p></div></li>
+        <li><div><h4>Optional outbound calls</h4>
+          <p class="small dim">Only if the church asks for them. Never the default.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">What you can count on</span>
+      <ul class="checks">
+        <li><span class="small">No roster needed. We never ask for the membership list to make
+            the program work.</span></li>
+        <li><span class="small">No member cold calls. Everything runs through church-approved
+            channels unless you ask otherwise.</span></li>
+        <li><span class="small">We handle scheduling. Your staff are not pulled away from
+            their day.</span></li>
+        <li><span class="small">No hard upsell. Members view a private gallery and decide on
+            their own time.</span></li>
+      </ul>
+    </section>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 6 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== 7. EXPERIENCE ========== -->
+  <div class="sheet">
+    <div class="runhead">
+      <span class="mark">Arceo Studio Collective</span>
+      <span class="eyebrow"><span class="ph">[CHURCH]</span> Directory Program</span>
+    </div>
+
+    <section class="block">
+      <span class="eyebrow">Where Julian has run programs</span>
+      <h2 class="title">Experience</h2>
+      <p class="small dim">Julian has spent fourteen years in portrait photography and the last
+         three running portrait programs from the first session through final delivery. He
+         recently founded his own studio, Arceo Studio Collective, and brings that hands-on
+         experience to it directly.</p>
+    </section>
+
+    <section class="block">
+      <div class="regions">
+        <div>
+          <span class="eyebrow">Southern California</span>
+          <ul>
+            <li>La Quinta Country Club</li>
+            <li>Thunderbird Country Club</li>
+            <li>Tamarisk Country Club</li>
+            <li>The Lakes Country Club</li>
+            <li>San Gabriel Valley Country Club</li>
+            <li>Long Beach Yacht Club</li>
+            <li>Santaluz Country Club</li>
+          </ul>
+        </div>
+        <div>
+          <span class="eyebrow">Northern California and the Bay Area</span>
+          <ul>
+            <li>Sequoyah Country Club</li>
+            <li>Almaden Country Club</li>
+            <li>San Jose Country Club</li>
+            <li>Green Hills Country Club</li>
+            <li>Cameron Park Country Club</li>
+          </ul>
+        </div>
+        <div>
+          <span class="eyebrow">Beyond California</span>
+          <ul>
+            <li>Florida Yacht Club, FL</li>
+            <li>Grand Harbor Country Club, FL</li>
+            <li>Olde Stone Country Club, KY</li>
+            <li>Newton Country Club, NJ</li>
+            <li>Royal Oaks Country Club, WA</li>
+            <li>Olympia Golf and Country Club, WA</li>
+            <li>Washington Golf and Country Club, VA</li>
+            <li>Carolina Country Club, NC</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">References</span>
+      <div class="refs">
+        <div>
+          <h4>Nate Henderson</h4>
+          <p class="small dim">General Manager, Cameron Park Country Club</p>
+          <p class="small"><a href="mailto:nhenderson@cameronparkcc.com">nhenderson@cameronparkcc.com</a></p>
+        </div>
+        <div>
+          <h4>Thomas Kollasch</h4>
+          <p class="small dim">General Manager, Olympia Golf and Country Club</p>
+          <p class="small"><a href="mailto:gm@olygolfclub.com">gm@olygolfclub.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="signoff">
+      <span class="eyebrow">Next step</span>
+      <p class="small dim">If this is the right fit, we will tailor a version specific to
+         <span class="ph">[CHURCH NAME]</span> and set the window together. I would be glad
+         to make it happen.</p>
+      <p style="margin-top:.4rem">Julian Arceo</p>
+      <p class="contact">Arceo Studio Collective &nbsp;·&nbsp; julian@arceostudiocollective.com
+         &nbsp;·&nbsp; (951) 498-8252</p>
+    </div>
+
+    <div class="runfoot">
+      <span class="eyebrow">Arceo Studio Collective</span>
+      <span class="eyebrow">Page 7 of 7</span>
+    </div>
+  </div>
+
+  <!-- ========== VARIANTS ========== -->
+  <div class="variants">
+    <div>
+      <span class="eyebrow brass">Not part of the proposal</span>
+      <h3 style="margin-top:.3rem">What changes for the other two segments</h3>
+      <p class="small dim">Same seven pages. Only the lines below swap.</p>
+    </div>
+
+    <div class="vgrid">
+      <div>
+        <span class="eyebrow">Senior living</span>
+        <ul>
+          <li>Addressed to the <strong>Life Enrichment</strong> or <strong>Activity Director</strong>, not an administrator.</li>
+          <li>"Resident" throughout, not member.</li>
+          <li>Drop the 2021 vendor callout. Replace with the resident-and-family framing: the portrait goes home to children and grandchildren.</li>
+          <li><strong>Add a consent paragraph on page 5.</strong> Consent comes from the resident, or the responsible party where the resident cannot give it, never from community staff.</li>
+          <li>Intake option A becomes a family email, since adult children are usually the ones who act on it.</li>
+          <li>Add background check and vaccination compliance to "what you can count on".</li>
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">55+ and HOA communities</span>
+        <ul>
+          <li>Addressed to the <strong>activities chair</strong> or lifestyle director.</li>
+          <li>"Homeowner" or "resident" throughout.</li>
+          <li>"No roster required" carries less weight here, since HOA rosters are semi-public. Lead instead on no lift for staff or volunteers.</li>
+          <li>Directory becomes the <strong>community directory</strong> or resident guide.</li>
+          <li>Clubhouse is the venue. Intake runs through the community newsletter and the clubhouse board.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <span class="eyebrow">Before this goes out</span>
+      <ul class="checks" style="margin-top:.5rem">
+        <li><span class="small">Swap the three plates for the senior portraits. The club images
+            do not fit this audience.</span></li>
+        <li><span class="small">Decide whether the club list stays. It reads as credibility to a
+            church, but a church or community reference would land harder. Worth adding one
+            as soon as there is one.</span></li>
+        <li><span class="small">Confirm the $150 entry point holds for this segment.</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>

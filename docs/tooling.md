@@ -16,42 +16,20 @@ What's in use, what connects, and where the gaps are. Answers the Phase 2 questi
 The back half exists. That's better than starting from nothing and it means Phase 2 is
 mostly integration, not selection.
 
-## The one genuine bottleneck: the DX8000
+## Payment capture — settled
 
-A standalone card terminal is a dead end for automation. It authorizes a payment and prints
-a receipt. It does not know what was sold, to whom, at which organization, by which
-photographer — and none of that reaches any system that can read it. Transactions land in
-Chase merchant reporting as amounts and timestamps, disconnected from everything else.
+The DX8000 stays. Sales are captured on a written order form and processed manually, and
+Jay is comfortable running it that way.
 
-That breaks four things at once:
+The one thing to carry forward: **the order form is the data source** for commission,
+segment P&L, and print conversion per photographer. Whatever fields those numbers need have
+to be on the form, filled in on the day, and collected centrally. Getting the form right
+once is much cheaper than reconstructing a quarter of sales later, and at ten photographers
+on commission the arithmetic has to be reproducible from something both sides can see.
 
-- **P&L** — revenue can't be attributed to a segment, an organization, or a photographer.
-- **Commission** — if commission is a share of print sales, sales have to be attributable
-  per photographer, per session. Right now they aren't.
-- **Print conversion by photographer**, the single most important number in the volume
-  model (playbook §5b.4). Not computable.
-- **Order accuracy** — the sale exists on a receipt, the order gets keyed into Bay Photo
-  separately, and nothing reconciles the two.
-
-At one photographer this is annoying. **At ten, across eight metros, on commission, it is
-the thing that causes disputes** — a photographer's pay depending on numbers nobody can
-reconstruct is how good working relationships end.
-
-Three ways out, cheapest first:
-
-1. **Record the sale in PASS at the point of sale**, then take payment on the DX8000 as
-   settlement. The order data lives somewhere readable; the terminal just moves money.
-   Requires discipline in the room, no new hardware.
-2. **Move card capture to a terminal with an API** — Square or Stripe both offer readers
-   that attach a line-item order to each payment and expose it. Merchant fees are
-   comparable; the data difference is total. This is the clean fix.
-3. **Log sales manually** into a shared sheet at the end of each day, and have a task
-   reconcile that against Chase settlements and PASS orders. Works, but it depends on ten
-   people doing admin after a long shoot day, which is exactly the thing that stops
-   happening in month three.
-
-**Recommendation: option 2 before the roster starts selling.** Every month it's deferred is
-a month of unattributable revenue, and commission-shaped disputes are retroactive.
+Worth designing the order form deliberately before the roster starts selling: organization,
+date, photographer, session, line items, total, payment method. That is enough for every
+report in the playbook.
 
 ## Manual Bay Photo ordering
 
