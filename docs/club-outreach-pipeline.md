@@ -3,6 +3,10 @@
 How we go from "there are private clubs near us" to "a named person at that club is
 reading a proposal written for them." Referenced by `cowork-playbook.md` §1.
 
+**Scope: every private club in the country.** Roughly 5,659 of them, about 1,602 country
+clubs, plus city, athletic, yacht and racquet clubs. The list is national. What's *not*
+national is how we work it — that's what the tier system below is for.
+
 ## The shape of it
 
 ```
@@ -18,12 +22,72 @@ Our Meta creative already argues this exact thing to members (`name-in-it`,
 level up: *your directory is incomplete, and completing it is a member benefit you can
 offer at no cost to the club.*
 
+## The three tiers
+
+A national list and a one-photographer studio are only compatible if the list is tiered.
+Discovery is national; effort is not.
+
+### Tier A — in-person reachable
+
+Anything drivable from Olympia, Kent, Cameron Park, or Piedmont. Currently 22 seeded clubs
+in `outreach/prospects.csv`. These get the **free management shoot** (block
+`03-free-management-shoot`) — Julian photographs the GM, department heads, and board
+officers at the club, free, no obligation.
+
+That offer is the single strongest thing in this entire pipeline, and it's the reason the
+local clubs are priority rather than merely convenient. It converts the decision from
+"should we hire a photographer for our members" into "should we accept something free,"
+which is a decision a GM can make alone, in a minute, without a board. It also puts Julian
+in the building, makes the decision-makers the subjects, and produces a local reference
+list from nothing.
+
+Work Tier A hard, in person, first. Everything else is downstream of having three clubs
+that will vouch for us.
+
+### Tier B — travel-viable clusters
+
+Metros far enough to need a trip, close enough to justify one. A Tier B club is not worked
+individually — it's worked as part of a cluster. **The rule: no trip until three clubs in
+one metro are warm, or one has committed.** A single club is never worth a flight; three
+clubs and a management-team shoot each is a week that pays for itself.
+
+Tier B is where Tier C leads go when enough of them cluster geographically. That promotion
+is the whole point of maintaining a national list.
+
+### Tier C — the national long tail
+
+Everything else. Mail and email only, signal-driven, low volume, patient. Tier C is not a
+sales pipeline — it is a **signal net**. Its job is to notice when a club anywhere in the
+country announces a directory rebuild, a centennial, or a new GM, and to put that club on
+the map. Most Tier C clubs are never contacted at all. The ones that are, are contacted
+because something happened at that specific club.
+
+Tier C converts three ways: a club replies and becomes a standalone job worth traveling
+for; enough clubs in one metro warm up and the cluster promotes to Tier B; or the list
+teaches us which signals actually predict interest, which makes Tier A better.
+
+### The fourth track — management companies
+
+Separate from the tiers and worth its own patience. **Invited** owns 200+ clubs with
+400,000+ members. **Troon** manages 579+ courses after acquiring Invited's third-party
+management business. A member-portrait program that works at one club in a portfolio works
+at all of them.
+
+This is a different sale — a repeatable member benefit deployed across a portfolio, with us
+as the standard vendor — and a much longer one. It is also the only path where the ceiling
+isn't set by how many days Julian can drive. Don't let it crowd out Tier A, and don't drop
+it either. See `research/sources.md` §Tier 2.
+
 ## Volume, honestly
 
-There are maybe 50–70 real prospects within range of the four markets. That's not a list
-you blast — it's a list you work. Ten well-researched contacts a month beats four hundred
-generic ones, and it's the only version that doesn't torch the domain's sending reputation
-or the studio's name in a small regional club community where GMs talk to each other.
+A national list is not a mailing list. Ten well-researched contacts a month beats four
+hundred generic ones, and it's the only version that doesn't torch the domain's sending
+reputation or the studio's name in a club world where GMs sit on each other's boards and
+publish each other's reciprocal lists.
+
+The list being national changes *discovery* volume, not *contact* volume. Contact volume is
+capped by one photographer's ability to actually deliver, and overselling capacity is worse
+than underselling it.
 
 Practical guardrails:
 
@@ -45,7 +109,8 @@ Practical guardrails:
 | `club_slug` | stable id, e.g. `olympia-country-golf` |
 | `club_name` | full legal/display name |
 | `club_type` | country · golf · yacht · athletic · city · tennis · social · lodge · other |
-| `market` | olympia · kent · cameron-park · piedmont |
+| `tier` | A (drivable) · B (travel cluster) · C (national long tail) |
+| `market` | olympia · kent · cameron-park · piedmont for Tier A; metro name for B and C |
 | `city`, `state` | |
 | `drive_minutes` | from the nearest market anchor |
 | `member_count_est` | and where the estimate came from |
@@ -68,58 +133,54 @@ what makes the follow-up task reliable.
 
 ## Sources
 
-**Verify each of these on the first research run** and record the working URL and cadence
-in `research/sources.md`. Publications get renamed, merged, and paywalled; this list is a
-starting set, not a verified index.
+**The full source index lives in `research/sources.md`** — national directories, management
+companies, trade press, club newsletters, and local press, each marked `verified` or
+`to-verify`. Don't duplicate it here; it's maintained by the research tasks.
 
-### Trade / industry
-- Club + Resort Business
-- BoardRoom Magazine — club governance and GM-level concerns
-- National Club Association (NCA)
-- Club Management Association of America (CMAA), and specifically its **regional chapters** —
-  Pacific Northwest for Olympia/Kent, the Northern California chapters for Cameron Park and
-  Piedmont. Chapter newsletters name new GMs, which is our single best trigger.
-- Club Benchmarking — publishes membership-trend data useful as proposal evidence
+Two things from it are worth repeating because they change how discovery works at national
+scale:
 
-### Local press (where clubs actually announce things)
-- Olympia: The Olympian, Thurston County chamber
-- Kent: Kent Reporter, Puget Sound Business Journal, Kent chamber
-- Cameron Park: Mountain Democrat, Sacramento Business Journal, El Dorado County chamber
-- Piedmont: Piedmont Exedra, Piedmont Post, East Bay Times, Piedmont chamber
+**Reciprocal club lists are the best discovery method we have.** Clubs publish public PDF
+one-sheets of every club their members get reciprocal access to, organized by state. Those
+lists are pre-filtered to exactly our buyer, and each club named on one publishes its own.
+Chain them three hops and you've covered most of the national city-club world without a
+single guess. Start from the Washington Athletic Club's list, since Seattle is already in
+our footprint.
 
-### The clubs themselves — highest value, least contested
-- Public member newsletters and club magazines posted on club websites
-- Club event calendars — galas, member appreciation, new-member receptions
-- Club social accounts, which announce renovations and anniversaries first
-- Board minutes, where clubs post them
-
-### Adjacent org types worth the same treatment
-Rotary, Elks, Masonic lodges, Junior League chapters, university and alumni clubs, yacht
-and sailing clubs, historical societies. Smaller budgets, but the directory argument lands
-harder because they genuinely have no photographer relationship.
+**A new GM or Membership Director is the highest-value trigger in the system.** They're
+rebuilding their picture of the club, they need an early win, and they have no incumbent
+photographer loyalty. CMAA chapter newsletters and BoardRoom announce these moves. A club
+that just hired a GM jumps the queue regardless of tier.
 
 ## Proposal structure
 
 One page. If it's two pages a GM forwards it to nobody.
 
+Assembled from `outreach/blocks/` — see that directory's README for which block to use
+when. The opening paragraph is always written fresh; if the letter could be sent to any
+club, it isn't ready.
+
 1. **The signal, first sentence.** "I saw the club is rebuilding the member directory for
    the centennial." If there's no signal worth naming, the proposal isn't ready to send.
 2. **The gap, one sentence.** Names in the directory, no faces beside them.
-3. **What we do on site.** A room at the club, a scheduled portrait week, members book
-   their own slot. Say plainly what the club has to provide — a room and a newsletter
-   mention — because "no work for your staff" is the actual product.
-4. **What it costs the club.** Nothing. No sitting fee to members, complimentary 5x7,
-   revenue comes from optional prints. That structure is already proven in the Tier 3
-   creative and it's the thing that gets a yes from a board.
-5. **Proof.** One line naming clubs served, or if that list is thin, one line about Julian
-   directing people who believe they photograph badly — which every board member privately
-   is.
-6. **One ask.** A fifteen-minute call, or a date to hold. Never a menu of options.
+   (`01-directory-argument`)
+3. **What it costs the club.** Nothing. Members sit free, complimentary 5x7, club provides
+   a room and a newsletter mention. That structure is what gets a yes without a board vote.
+   (`02-costs-the-club-nothing`)
+4. **Tier A only: the free management shoot.** (`03-free-management-shoot`) In a Tier A
+   letter this *replaces* the proof paragraph, because it is better than proof — it's an
+   offer to demonstrate rather than a claim to be believed. Lead the ask with it.
+5. **Tier B/C: proof.** One line naming clubs served, or if that list is thin, one line
+   about Julian directing people who believe they photograph badly — which every board
+   member privately is.
+6. **One ask.** (`08-the-ask`) Never a menu of options.
 7. **Signature block** with postal address and opt-out if it's email.
 
 Voice: plain, unhurried, no exclamation marks, no "excited to," no em dashes. Same
 register as the ad copy — the confidence in that deck comes from short declaratives, not
 enthusiasm.
+
+Worked example: `outreach/proposals/olympia-country-golf.md`.
 
 ## Mail, specifically
 

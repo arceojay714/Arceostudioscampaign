@@ -19,45 +19,92 @@ Cadence labels: **D** daily · **W** weekly · **M** monthly · **E** event-driv
 
 ## 1. Club outreach engine
 
-The big one. Full design in `club-outreach-pipeline.md`. Five tasks, run in order,
-each feeding the next.
+The big one. Full design in `club-outreach-pipeline.md`.
 
-### 1.1 — Prospect discovery (W, then M once the list is built)
+**Scope is national — every private club in the country, roughly 5,659 of them.** Effort is
+tiered, because one photographer cannot work a national list evenly:
 
-> Research private clubs within 45 minutes' drive of Olympia WA, Kent WA, Cameron Park CA,
-> and Piedmont CA. Include: country clubs, golf clubs, yacht/sailing clubs, athletic and
-> city clubs, tennis/racquet clubs, social and dining clubs, university clubs, Elks/Rotary/
-> Masonic lodges, and Junior League chapters. For each, add a row to
-> `outreach/prospects.csv` using the schema in `docs/club-outreach-pipeline.md`.
-> Skip any club already in the file. Report only what's new.
+- **Tier A** — drivable from Olympia, Kent, Cameron Park, Piedmont. 22 clubs seeded in
+  `outreach/prospects.csv`. These get the **free management shoot**: Julian photographs the
+  GM, department heads and board officers at the club, free, no obligation. It turns a
+  months-long institutional decision into a GM accepting something free, and it puts him in
+  the building. Work these first and in person.
+- **Tier B** — metros worth a trip, but only once three clubs there are warm.
+- **Tier C** — the national long tail. A signal net, not a mailing list. Most are never
+  contacted; the ones that are, are contacted because something happened at that club.
 
-### 1.2 — Contact enrichment (W)
+Tasks run in order, each feeding the next.
 
-> For every row in `outreach/prospects.csv` with `contact_status = new`, find the General
-> Manager, Membership Director, and Communications/Newsletter editor by name. Find a
-> public email or the club's contact form URL, plus the club's physical mailing address.
-> Note the source URL for each field. Do not guess or pattern-match an email address —
-> if you can't find it published, mark `email_status = needs_mail` and move on.
-> That's the signal to reach them by post instead.
+### 1.1 — Prospect discovery (W)
+
+Two modes. Run **Tier A first** until that list is exhausted, then switch to national.
+
+**Tier A mode:**
+
+> Find private clubs within 45 minutes' drive of Olympia WA, Kent WA, Cameron Park CA, and
+> Piedmont CA that are not already in `outreach/prospects.csv`. Include country, golf,
+> yacht/sailing, athletic, city, tennis/racquet, social and dining clubs, university clubs,
+> Elks/Rotary/Masonic lodges, and Junior League chapters. Add each as `tier = A` using the
+> schema in `docs/club-outreach-pipeline.md`. Report only what's new.
+
+**National mode (Tier C):**
+
+> Working from the national directories in `research/sources.md` §Tier 1, add private clubs
+> to `outreach/prospects.csv` as `tier = C`, 50 per run, with `market` set to their metro.
+> Prioritize the reciprocal-club-list method: take a club already in our file that publishes
+> a reciprocal list, and add every club named on it. Skip duplicates by `club_slug`.
+> Do not enrich or contact anything in Tier C — this pass is building the signal net only.
+
+### 1.2 — Contact enrichment (W) — **Tier A and B only**
+
+Never enrich Tier C in bulk. A Tier C club gets enriched when it produces a signal, not
+before, or we spend all our time researching clubs we will never contact.
+
+> For every row in `outreach/prospects.csv` with `tier` A or B and `contact_status = new`,
+> find the club's real website, then the General Manager, Membership Director, and
+> Communications/Newsletter editor by name. Find a public email or the club's contact form
+> URL, plus the physical mailing address. Note the source URL for each field. Do not guess
+> or pattern-match an email address or a website — if it isn't published, mark
+> `email_status = needs_mail` and move on. That's the signal to reach them by post instead.
+> Several seeded rows have `[website not yet verified]` in `owner_notes`; clear that note
+> once the real URL is confirmed.
 
 ### 1.3 — Signal scan (D)
 
-The hook that makes a proposal specialized instead of generic.
+The hook that makes a proposal specialized instead of generic. Runs across the **whole**
+list — this is the one task where Tier C earns its keep.
 
-> Check the news, newsletters, and club websites listed in `docs/club-outreach-pipeline.md`
-> for these triggers, and append hits to `outreach/signals.md` with date and source link:
-> new or rebuilt member directory, clubhouse renovation or reopening, milestone
-> anniversary (25/50/75/100 years), new GM or Membership Director, membership drive or
-> waitlist opening, annual gala or member appreciation event, board elections, new club
-> app or member portal, and any mention of member photos or headshots.
+> Check the sources in `research/sources.md` and the club websites in
+> `outreach/prospects.csv` for these triggers, and append hits to `outreach/signals.md`
+> with date and source link: new or rebuilt member directory, clubhouse renovation or
+> reopening, milestone anniversary, new GM or Membership Director, membership drive or
+> waitlist opening, annual gala or member appreciation event, board elections, new club app
+> or member portal, and any mention of member photos or headshots.
+> Weight new-GM and new-Membership-Director hires highest — those jump the queue regardless
+> of tier. Set the club's `contact_status` to `signal-waiting`. If three or more clubs in
+> one metro are `signal-waiting`, say so explicitly: that cluster is a Tier B trip.
 
 ### 1.4 — Proposal drafting (E — fires when a club has a signal)
 
-> For [CLUB], write a one-page proposal using the structure and voice rules in
-> `docs/club-outreach-pipeline.md`. Lead with the specific signal we found, not with us.
-> Save as `outreach/proposals/<club-slug>.md`. Then produce two versions: a Gmail draft
-> addressed to the named contact, and a print-ready letter PDF if `email_status = needs_mail`.
-> Leave both unsent.
+> For [CLUB], assemble a one-page proposal from `outreach/blocks/`, following the structure
+> and voice rules in `docs/club-outreach-pipeline.md`. Write the opening paragraph fresh
+> around the specific signal we found — if it could be sent to any club, it isn't ready.
+> Tier A letters must include the free management shoot block and lead the ask with it.
+> Verify any factual claim about the club (founding year, milestone, staff names) against
+> the club's own materials before it goes in the letter.
+> Save as `outreach/proposals/<club-slug>.md`, then produce a Gmail draft to the named
+> contact, and a print-ready letter PDF if `email_status = needs_mail`. Leave both unsent.
+
+### 1.4b — Management company track (M)
+
+Slow, separate, and the only path whose ceiling isn't set by driving distance.
+
+> Research the club management companies in `research/sources.md` §Tier 2 — Invited, Troon,
+> KemperSports, Bobby Jones Links, Century Golf, Hampton Golf, OB Sports. For one company
+> per month: who owns member experience or member benefits, what their club count and
+> footprint is now, and whether they already have a photography vendor relationship. Draft
+> a portfolio-level pitch — a repeatable member benefit deployed across many clubs — not
+> the single-club letter. Log findings to `research/management-companies.md`.
 
 ### 1.5 — Follow-up ladder + reply watch (D)
 
@@ -217,31 +264,57 @@ Once a club signs, the job changes from selling the club to filling the slots.
 
 ---
 
-## 6. Things not on your list that probably should be
+## 6. The things not on your list — now built
 
-- **A club season calendar.** Directory rebuilds cluster in fall, galas in spring,
-  anniversaries are fixed dates you can look up years ahead. A task that maintains
-  `ops/club-calendar.md` means you're pitching a club three months before they know they
-  need you, instead of the week after they hired someone else.
-- **A referral engine.** Every satisfied sitter belongs to at least one other club, board,
-  or organization. A monthly task that reads `ops/sessions.csv` and drafts a specific
-  "who else should I be talking to" ask is cheaper than any cold outreach.
-- **A proposal component library.** Rather than writing each proposal from scratch, keep
-  `outreach/blocks/` — reusable sections for pricing, the directory argument, the
-  no-sitting-fee structure, insurance and COI language, on-site logistics, turnaround
-  times. Proposals become assembly, and quality stops varying with how tired you were.
-- **Contract, COI, and W-9 readiness.** Clubs are institutional buyers. The first thing a
-  GM asks for after "yes" is a certificate of insurance and a signed agreement. Having
-  those staged as templates converts a warm yes faster.
-- **Weekly business dashboard.** Sessions booked, sessions shot, revenue, average order
-  value, ad spend, cost per booking, outreach touches sent, replies received. One page,
-  Mondays. Trends are invisible without it.
-- **CRM hygiene.** A monthly pass that catches duplicate contacts, missing emails, sitters
-  with no session record, and clubs whose named contact has left. Outreach lists rot at
-  roughly 25% a year.
-- **An "assumptions I'm working from" file.** Every task above encodes guesses about the
-  business. A monthly task that surfaces them for correction keeps the automation from
-  drifting away from reality quietly.
+These were the gaps. Each one now has a file, so the tasks that maintain them have
+somewhere to write.
+
+### 6.1 — Club season calendar (M) → `ops/club-calendar.md`
+
+Directory rebuilds cluster in fall, galas in spring, anniversaries are fixed dates you can
+look up decades ahead. **Already produced two live findings**: Olympia Country & Golf Club
+appears to hit its centennial in 2026, and Claremont its 130th — both Tier A, both need
+verifying against club materials before anything is sent.
+
+> Update `ops/club-calendar.md`: add `founded_year` for newly enriched prospects, recompute
+> the milestone table, and move any club with a milestone inside 12 months to
+> `signal-waiting`. Verify each milestone against the club's own website or newsletter.
+
+### 6.2 — Referral engine (M)
+
+Every satisfied sitter belongs to at least one other club, board, or organization. Cheaper
+than any cold outreach and it warms Tier B and C clubs we'd otherwise never reach.
+
+> Read `ops/sessions.csv` for delivered sessions with positive feedback. For each, draft a
+> specific referral ask naming the clubs or boards that person is plausibly connected to.
+> Cross-reference against `outreach/prospects.csv` — a referral into a club already on our
+> list is worth far more than a general ask.
+
+### 6.3 — Proposal blocks → `outreach/blocks/`
+
+Nine files, assembled per proposal. The strongest is `03-free-management-shoot`.
+
+### 6.4 — Club readiness → `ops/club-readiness.md`
+
+COI, W-9, services agreement, model release, sample spread. **All currently unstaged**,
+which means a warm yes today would stall on paperwork. This is the cheapest item in the
+whole playbook to fix and it's pure downside until it's done.
+
+### 6.5 — Weekly dashboard (W) → `ops/dashboard.md`
+
+One page, Mondays, from the template. Report trends, not single-week numbers.
+
+### 6.6 — List hygiene (M)
+
+> Pass over `outreach/prospects.csv` and `ops/sessions.csv`: duplicate slugs, missing
+> emails, sitters with no session record, contacts whose named GM has moved on. A departed
+> GM is not just a stale row — it's a new-GM signal at that club, so file it as one.
+
+### 6.7 — Assumptions review (M) → `ops/assumptions.md`
+
+Every task here encodes guesses about the business. The file lists them plus five open
+questions that need Jay's answers, not research. Left unchecked, the automation drifts from
+reality quietly and keeps running as though nothing changed.
 
 ---
 
@@ -249,12 +322,21 @@ Once a club signs, the job changes from selling the club to filling the slots.
 
 Don't launch all of this. Three tasks, this week:
 
-1. **1.1 Prospect discovery** — nothing else in section 1 can run until the list exists.
-2. **2.3 Newsletter harvesting** — the highest-signal, lowest-competition research we can
-   do, and it directly answers "find private club sources and newsletters."
+1. **1.2 Contact enrichment** — 22 Tier A clubs are already seeded in
+   `outreach/prospects.csv`, 13 of them missing a verified website and all of them missing
+   a named human. Enrichment, not discovery, is now the bottleneck.
+2. **2.3 Newsletter harvesting** — highest-signal, least-contested research available, and
+   it directly answers "find private club sources and newsletters."
 3. **3.1 Meta campaign health check** — the moment the 11 ads publish, this stops you
-   having to open Ads Manager on your phone.
+   opening Ads Manager on your phone.
 
-Add 4.1 and 4.5 once bookings are flowing, and section 5 once there are deliveries to
-ask about. Sequence matters: a review-request task with no deliveries just runs and
-reports nothing every day until you stop trusting it.
+Then **1.1 in national mode** to start building the Tier C signal net, once Tier A is
+enriched and moving.
+
+Add 4.1 and 4.5 once bookings are flowing, and section 5 once there are deliveries to ask
+about. Sequence matters: a review-request task with no deliveries just runs and reports
+nothing every day until you stop trusting it.
+
+**Before any letter goes out**, stage the items in `ops/club-readiness.md` and answer the
+open questions in `ops/assumptions.md`. Both are quick, and both are load-bearing for
+everything above.
