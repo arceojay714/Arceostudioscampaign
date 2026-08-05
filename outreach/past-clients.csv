@@ -1,0 +1,22 @@
+club_slug,club_name,region,city,state,nearest_photographer,gm_name,email,last_program_year,rebook_due,contact_status,notes
+la-quinta-cc,La Quinta Country Club,Southern California,La Quinta,CA,orange-county,,,,,new,"Coachella Valley cluster — 4 past clients within ~20 min of each other."
+thunderbird-cc,Thunderbird Country Club,Southern California,Rancho Mirage,CA,orange-county,,,,,new,Coachella Valley cluster.
+tamarisk-cc,Tamarisk Country Club,Southern California,Rancho Mirage,CA,orange-county,,,,,new,Coachella Valley cluster.
+the-lakes-cc,The Lakes Country Club,Southern California,Palm Desert,CA,orange-county,,,,,new,Coachella Valley cluster.
+san-gabriel-valley-cc,San Gabriel Valley Country Club,Southern California,San Gabriel,CA,los-angeles,,,,,new,Jacob Medina's range.
+long-beach-yacht,Long Beach Yacht Club,Southern California,Long Beach,CA,orange-county,,,,,new,Directly in the OC roster's range.
+santaluz-cc,Santaluz Country Club,Southern California,San Diego,CA,orange-county,,,,,new,San Diego — reachable from OC.
+sequoyah-cc,Sequoyah Country Club,Northern California / Bay Area,Oakland,CA,piedmont,,,,,new,"PAST CLIENT. Also seeded in prospects.csv as cold — corrected."
+almaden-cc,Almaden Country Club,Northern California / Bay Area,San Jose,CA,piedmont,,,,,new,Bay Area cluster.
+san-jose-cc,San Jose Country Club,Northern California / Bay Area,San Jose,CA,piedmont,,,,,new,Bay Area cluster.
+green-hills-cc,Green Hills Country Club,Northern California / Bay Area,Millbrae,CA,piedmont,,,,,new,Bay Area cluster.
+cameron-park-cc,Cameron Park Country Club,Northern California / Bay Area,Shingle Springs,CA,sacramento,Nate Henderson,nhenderson@cameronparkcc.com,,,reference,"PAST CLIENT AND NAMED REFERENCE. Valerie Mahood's range."
+florida-yacht,Florida Yacht Club,Beyond California,Jacksonville,FL,none,,,,,new,No photographer in FL — travel or recruit.
+grand-harbor-cc,Grand Harbor Country Club,Beyond California,Vero Beach,FL,none,,,,,new,No photographer in FL — travel or recruit.
+olde-stone-cc,Olde Stone Country Club,Beyond California,Bowling Green,KY,nashville,,,,,new,"~1hr from Nashville — Richard Yoon's range."
+newton-cc,Newton Country Club,Beyond California,Newton,NJ,connecticut,,,,,new,Christian Romero's broader range.
+royal-oaks-cc,Royal Oaks Country Club,Beyond California,Vancouver,WA,home,,,,,new,WA — Jay's range.
+olympia-golf-cc,Olympia Golf and Country Club,Beyond California,Olympia,WA,home,Thomas Kollasch,gm@olygolfclub.com,,,reference,"PAST CLIENT AND NAMED REFERENCE. Home market. Also seeded in prospects.csv as a cold centennial lead — corrected."
+washington-golf-cc,Washington Golf and Country Club,Beyond California,Arlington,VA,none,,,,,new,No photographer in the DC area — travel or recruit.
+carolina-cc,Carolina Country Club,Beyond California,Raleigh,NC,raleigh,,,,,new,"Lamont Johnson is in Raleigh. Strongest out-of-state reactivation pairing."
+los-altos-gcc,Los Altos Golf and Country Club,Northern California / Bay Area,Los Altos,CA,piedmont,Kelly Bland,,,,proposal-sent,"LIVE PROPOSAL, June 2026. Status unknown — needs a follow-up check."

@@ -43,12 +43,21 @@ Our wedge, stated plainly:
 - **We are local and we will show up in person.** Neither incumbent is going to drive to
   Shingle Springs to shoot the management team for free.
 
-## Where they beat us and we should not pretend otherwise
+## Correction — the breadth gap does not exist
 
-Multi-site portfolios, national management-company contracts, and any club that wants a
-single vendor for course, food, event, and member imagery. If a club's brief is "cover
-everything visual, all year," we're not the fit — and a proposal that pretends otherwise
-loses on delivery instead of losing at the pitch, which is worse.
+An earlier version of this file claimed the incumbents beat us on breadth, and that any club
+wanting one vendor for course, food, event and member imagery was not our fit. **That was
+wrong**, written before the actual proposal was available.
+
+The Los Altos deliverables list already includes staff and board portraits, event coverage
+inside the window, food and beverage imagery, clubhouse and facility imagery, staff
+onboarding booklets, weekly status updates to management, and a private gallery on a
+one-week turnaround. That is at least as broad as anything Trident advertises, and it is
+bundled at no cost to the club rather than quoted line by line.
+
+Where the incumbents still win: **multi-site portfolio contracts** signed at the management
+company level across dozens of properties at once. That's a scale advantage, not a service
+one, and it's the reason the management-company track in `research/sources.md` exists.
 
 ## To research next month
 

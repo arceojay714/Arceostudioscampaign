@@ -6,17 +6,28 @@ correct anything wrong and the tasks that depend on it get updated the same day.
 
 Seeded 2026-08-05.
 
-## About the offer
+## About the offer — now largely CONFIRMED
 
-- Members sit at no charge; revenue comes from optional print orders beyond the
-  complimentary 5x7. **Assumed from the Tier 3 ad creative — confirm this is the standing
-  offer and not a promotion.**
-- Sittings run about 15 minutes. *Unverified.*
-- Retouching is included in every package. *Stated in `posing-is-not-your-job` creative.*
-- Proofs go out within a week of the shoot. *Unverified — this appears in draft proposals
-  and becomes a promise the moment one is sent.*
-- Julian shoots everything personally. This is load-bearing for the whole pitch. If it ever
-  stops being true, the competitive argument in `research/competitors.md` collapses.
+Confirmed by the Los Altos proposal (June 2026), `reference/los-altos-proposal-extracted.txt`:
+
+- **No cost to the org, no cost to participants.** Every participant keeps a finished
+  portrait, framed as *the organization's gift*.
+- **Print options start around $150.**
+- **Delivery on a one-week turnaround**, with a private online gallery.
+- **The engagement is a four-to-six week residency**, not a week. No fixed date; the org
+  sets the pace.
+- **No roster required** — participants book themselves via a private link.
+- The org is asked for three things only: a short announcement, a room, one staff contact.
+- Deliverables are much broader than assumed: staff and board portraits, staff onboarding
+  booklets, event coverage, F&B and facility imagery, weekly status updates.
+- Backgrounds are set to the org's preference and signed off before the first session.
+
+Still unverified:
+
+- Sitting length. *Still unknown, and it sets the capacity math.*
+- Whether the $150 entry point holds for the community segment, where budgets differ.
+- Whether the deliverables list scales to a community-segment engagement or was
+  club-specific.
 
 ## About the network
 
@@ -41,6 +52,13 @@ Seeded 2026-08-05.
   be physically possible.
 - Free management shoots cost a morning plus prints. Sustainable at maybe two a month.
 
+## About tooling — ANSWERED
+
+Acuity for booking, PASS for galleries and delivery, Chase DX8000 for card capture, Bay
+Photo for print (manual or via PASS). See `docs/tooling.md`. The open item is payment
+capture: the DX8000 produces no attributable line-item data, which blocks commission
+calculation, P&L by segment, and print-conversion-by-photographer.
+
 ## About the market
 
 - Four home markets: Olympia, Kent, Cameron Park, Piedmont. Tier A is anything drivable
@@ -62,8 +80,12 @@ Seeded 2026-08-05.
 
 1. What is the actual member-facing price list beyond the complimentary print?
 2. How many sittings can you do in a day, and how many days in a row?
-3. Is there existing club work to reference, or does the reference list start at zero?
-   (The roster may already have relevant work — worth asking all ten.)
+3. ~~Is there existing club work to reference?~~ **ANSWERED — and the earlier premise was
+   wrong.** Fourteen years in portrait photography, three running club portrait programs,
+   and roughly 20 clubs served (`outreach/past-clients.csv`), with two named GM references.
+   The reference list was never thin. Remaining question: **what year did each past program
+   run?** Directory cycles are two to three years, so those dates are the rebooking
+   calendar.
 4. Is the insurance in place, and can the broker name a club as additional insured?
 5. Is `@thearceostudio` ever going to be connected to the business, or do we plan around
    the Facebook Page identity permanently?
