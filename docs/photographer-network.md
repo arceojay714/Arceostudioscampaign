@@ -20,47 +20,49 @@ So the model is proven, the incumbent is gone, and the buyers still understand t
 That's an unusually good position. The risk isn't the idea. It's the two places this shape
 of business reliably breaks.
 
-## Failure mode one: pure commission burns the roster
+## The model as it actually stands
 
-The trap is subtle. A photographer on straight commission earns nothing until prints sell —
-but in a centralized model **the photographer doesn't control the sales process**. They
-shoot, and then their income depends on a gallery, a follow-up sequence, and a fulfillment
-chain they have no hand in. When a month's sessions convert badly, they conclude the
-program doesn't pay and take local work instead. You lose them right as the market is
-warming up, and re-recruiting costs more than the floor would have.
+Three things resolved that change the economics materially:
 
-**Recommendation: a per-session floor plus commission, not pure commission.** A modest
-guaranteed rate per session or per shoot day, plus a percentage of net print revenue from
-their own sessions. The floor is cheap — it's the difference between a photographer who
-takes your Saturday booking and one who takes someone else's — and the commission is what
-makes a big church worth their enthusiasm.
+- **Sales are in-person, not gallery-led.** The photographer sells in the room, right after
+  the sitting. Galleries are an addition, not the mechanism. IPS converts at a different
+  order of magnitude than gallery follow-up, and it means the photographer's earnings are
+  in their own hands rather than downstream of a central process they can't influence.
+- **There is a per-session fee** on top of commission, so nobody is working a slow day for
+  nothing.
+- **The roster is trained, not recruited cold.** All ten are former colleagues from EA who
+  learned this way of working from Jay directly. They shoot *and* they sell — the second
+  half being the part most photographer networks never solve.
 
-Pair it with **territory exclusivity**, which costs nothing and is worth a great deal to
-them. One photographer per metro per segment. This matters immediately: four of your ten
-are in Orange County and will collide on day one without it.
+That combination removes the usual reason these networks fail. The remaining risk is not
+motivation; it's consistency at distance.
 
-## Failure mode two: quality drift kills the pitch
+**Territory exclusivity still needs deciding.** It costs nothing and is worth a lot to a
+photographer. Four of the ten are in Orange County and will collide without a split.
 
-Right now the entire competitive argument is *Julian directs you personally, and posing is
-not your job*. The moment a network shoots the work, that argument is only true if every
-photographer delivers it.
+## The one thing still worth building: the capture standard
 
-Lifetouch solved this with a rigid capture spec, and it's why their directories looked
-consistent across thousands of churches and hundreds of photographers. You need the same
-thing, and it's the highest-leverage document in this whole plan:
+Trained people still drift apart over a year in eight cities without a written reference —
+not from carelessness, but because there's nothing to check against. Lifetouch's rigid
+capture spec is why their directories looked consistent across thousands of churches and
+hundreds of photographers.
+
+Since the roster already knows the method, this is a *transcription* job rather than a
+training programme, and Jay is the only person who can write it. It's the highest-leverage
+document in the plan and probably a day's work:
 
 - **A capture standard** — lighting setup, backdrop, focal length, framing, exposure, the
   shot sequence for an individual, a couple, and a family group.
 - **A direction standard.** The posing-is-not-your-job promise is a *behavior*, not a
   setting. It has to be taught, because it's the actual product.
-- **A first-shoot review.** Every new photographer's first session gets looked at before
-  the files go anywhere near a client.
-- **Central retouching**, at least at first. It's the cheapest way to make ten
-  photographers' output look like one studio's.
+- **The sales conversation**, since they already do it — what gets shown, in what order, how
+  the complimentary print is framed. Written down, it becomes teachable to photographer
+  eleven and twelve.
+- **Central retouching**, at least at first. Cheapest way to make ten photographers' output
+  look like one studio's.
 
-Do not send anyone to a paying organization before their sample work has been reviewed
-against the standard. One bad church directory in Raleigh is a review, a refund, and a
-market you can't re-enter.
+It also becomes the field knowledge base — see `docs/system-architecture.md` §10. A
+photographer texting from a job with an awkward room gets an answer out of this document.
 
 ## Who does what
 
@@ -73,31 +75,25 @@ The division of labor is the whole reason this scales:
 | Member/family scheduling | **Central** — the self-serve booking page. |
 | Shooting | **Local photographer.** |
 | Retouching | **Central.** |
-| Sales and ordering | **Central.** |
+| Sales | **Local photographer, in person, at the session.** |
+| Order processing and fulfilment | **Central.** |
 | Fulfillment and print | **Central.** |
 | Client relationship | **Central**, with the photographer as the face on the day. |
 
-Photographers are delivery capacity. They should not have to prospect, quote, sell, or
-chase payment — if they wanted to do all that they'd have their own studio, and several of
-them do. **What you're offering them is booked work in their own city with no sales
-burden.** That's the pitch to the roster, and it's a genuinely good one for a photographer
-who wants shoot days rather than a business.
+Photographers shoot and sell. They should not have to prospect, quote, chase payment, or
+build a client base. **What's on offer is booked work in their own city, with the finding
+and the fulfilment handled.** For a photographer who wants shoot days rather than a
+business, that's a genuinely good deal.
 
 ## How the prints actually sell
 
-This is where the volume model lives or dies, and the right answer differs by segment.
+In person, at the session, by the photographer. That's the mechanism.
 
-- **Churches and 55+ communities** — families are physically present on the day. An
-  in-person viewing right after the sitting converts far better than any follow-up email,
-  which is exactly how Lifetouch did it. This is worth building toward, but it needs
-  training and it's the harder path to start on.
-- **Senior living** — the resident sits and the **adult children buy, usually remotely and
-  often several of them**. A central online gallery with a good follow-up sequence is
-  genuinely the right tool here, not a compromise.
-
-Start centralized and gallery-based across the board because it's controllable and it keeps
-the sales burden off the roster. Layer in-person viewing into the church segment once one
-photographer has proven it, then teach it to the rest.
+One segment inverts it. **In senior living the resident sits and the adult children buy —
+usually remotely, often several of them.** There is frequently nobody in the room with a
+credit card and an emotional stake. That segment needs a gallery and a family follow-up
+sequence bolted onto the IPS process, not instead of it, and it's worth designing
+deliberately because the per-session value there is the highest in the plan.
 
 ## The classification problem — read this before writing a commission check
 
