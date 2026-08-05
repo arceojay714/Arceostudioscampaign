@@ -14,6 +14,9 @@ after a GM says yes.
 | Business license, per jurisdiction | **check** | WA and CA both in play; Tier B travel adds more. |
 | Sample directory spread | **not staged** | A physical example of finished work matters more than any document here. |
 | Reference list | **thin** | The free management shoots are how this gets built. First three become the reference list. |
+| Background check (vendor) | **not staged** | Required by many senior living operators before a vendor is admitted. See `docs/community-segment.md`. |
+| Vaccination records | **not staged** | Same — commonly required in senior living and CCRCs. |
+| Resident/responsible-party consent form | **not staged** | Senior living specific. Consent comes from the resident, or the responsible party where the resident cannot give it — never from community staff on a resident's behalf. |
 
 **Being able to answer all of these inside one business day is a genuine competitive
 advantage** over a solo photographer who cannot, and it is entirely within our control.

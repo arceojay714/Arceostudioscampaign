@@ -89,6 +89,13 @@ The list being national changes *discovery* volume, not *contact* volume. Contac
 capped by one photographer's ability to actually deliver, and overselling capacity is worse
 than underselling it.
 
+**The contact channel is mail, then a call, then email** — not email first. Clubs hide
+staff contacts deliberately, so hunting for a GM's address is wasted effort. See
+`docs/contact-sequence.md`, which supersedes the email-first assumptions below. Because
+every email in that sequence is solicited, the deliverability ceiling is much softer than
+the original guardrails assumed; the real ceiling is how many calls get made and how many
+free shoots can actually be delivered.
+
 Practical guardrails:
 
 - **Max 10 new cold contacts per week**, from one mailbox.

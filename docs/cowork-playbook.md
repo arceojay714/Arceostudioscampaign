@@ -12,6 +12,10 @@ Cowork as a task prompt with little or no editing.
 2. **Every task writes its output to this repo or to a Drive doc**, so the next run can read
    what the last run did. A task that only posts a summary into a chat window has no memory
    and will re-do work and re-contact people.
+3. **Never guess a contact detail.** No pattern-matched emails, no assumed URLs. A blank
+   field is correct and costs nothing; an invented one bounces, or worse, reaches a
+   stranger. For clubs specifically, a missing email is the *expected* result — see
+   `docs/contact-sequence.md`.
 
 Cadence labels: **D** daily · **W** weekly · **M** monthly · **E** event-driven.
 
@@ -60,14 +64,35 @@ Two modes. Run **Tier A first** until that list is exhausted, then switch to nat
 Never enrich Tier C in bulk. A Tier C club gets enriched when it produces a signal, not
 before, or we spend all our time researching clubs we will never contact.
 
+**Clubs hide staff emails on purpose. Do not hunt for them.** Full reasoning in
+`docs/contact-sequence.md` — the channel is mail, then a call, then email. This task's job
+is to make a club *mailable and callable*, and then stop.
+
 > For every row in `outreach/prospects.csv` with `tier` A or B and `contact_status = new`,
-> find the club's real website, then the General Manager, Membership Director, and
-> Communications/Newsletter editor by name. Find a public email or the club's contact form
-> URL, plus the physical mailing address. Note the source URL for each field. Do not guess
-> or pattern-match an email address or a website — if it isn't published, mark
-> `email_status = needs_mail` and move on. That's the signal to reach them by post instead.
-> Several seeded rows have `[website not yet verified]` in `owner_notes`; clear that note
-> once the real URL is confirmed.
+> confirm: the club's real website, the exact mailing address, the main phone number, the
+> General Manager's name if it appears in one or two sources (CMAA chapter rosters,
+> BoardRoom or Club + Resort hiring announcements, LinkedIn, club newsletters, local press),
+> and any public member newsletter URL. Note the source for each.
+> Do not guess or pattern-match a website or an email address. Leave `email` blank and
+> `email_status = unknown` — that is the expected state, not a failure, and it does not
+> block anything. A club with a verified address and a phone number is fully ready to
+> contact. Several seeded rows have `[website not yet verified]` in `owner_notes`; clear
+> that note once the real URL is confirmed. Set `contact_status = enriched`.
+
+### 1.2b — Letter → call → email queue (D)
+
+The engine that actually moves clubs. Reads `docs/contact-sequence.md` and
+`outreach/call-script.md`.
+
+> Three passes over `outreach/log.csv` and `outreach/prospects.csv`:
+> **(a)** Clubs at `enriched` with a signal and no touches — draft the letter, print-ready,
+> addressed to the GM by name or to "General Manager" by title. Queue it, don't send it.
+> **(b)** Clubs whose letter went out 5+ business days ago with no logged call — put them
+> on today's call list with the club's phone number, the letter's opening line, the
+> gatekeeper's name if we have one, and `best_time_to_call` if logged.
+> **(c)** Clubs where a call produced an email address — draft the follow-up email
+> containing exactly what was promised on the call and nothing else. Leave it unsent.
+> Never more than two call attempts per letter. After that, dormant for six months.
 
 ### 1.3 — Signal scan (D)
 
@@ -94,6 +119,26 @@ list — this is the one task where Tier C earns its keep.
 > the club's own materials before it goes in the letter.
 > Save as `outreach/proposals/<club-slug>.md`, then produce a Gmail draft to the named
 > contact, and a print-ready letter PDF if `email_status = needs_mail`. Leave both unsent.
+
+### 1.4a — Community segment discovery (W) — **the volume engine**
+
+Churches, senior living, 55+ and HOA communities, lodges, small clubs. Separate list,
+separate rules, public contact info. Full reasoning in `docs/community-segment.md` —
+including why this segment got more urgent: **Lifetouch closed its church photography
+division in May 2021**, so the national incumbent in church pictorial directories is gone
+and the buyers already understand the free-sitting model.
+
+> Add organizations to `outreach/community-prospects.csv` within 45 minutes of Olympia,
+> Kent, Cameron Park, or Piedmont. Rotate the type each run so no one category dominates:
+> churches and congregations, senior living and CCRC communities, 55+ and HOA communities,
+> Elks/Rotary/Kiwanis/Masonic/VFW/Grange, historical societies.
+> Because these publish their contacts, fill them in during discovery: named contact and
+> role (pastor, church administrator, directory coordinator, life enrichment or activity
+> director, HOA activities chair), phone, email with source, mailing address, and size
+> estimate. Where a church's site shows a pictorial directory, record its year in
+> `last_directory_year` — **anything 2021 or earlier is a live lead**, because that's when
+> the national vendor disappeared.
+> Do not contact anyone. Research and record only.
 
 ### 1.4b — Management company track (M)
 
@@ -322,16 +367,16 @@ reality quietly and keeps running as though nothing changed.
 
 Don't launch all of this. Three tasks, this week:
 
-1. **1.2 Contact enrichment** — 22 Tier A clubs are already seeded in
-   `outreach/prospects.csv`, 13 of them missing a verified website and all of them missing
-   a named human. Enrichment, not discovery, is now the bottleneck.
-2. **2.3 Newsletter harvesting** — highest-signal, least-contested research available, and
+1. **1.4a Community segment discovery** — the volume engine, public contacts, no
+   gatekeepers, and a national incumbent that vacated the church market in 2021. It pays
+   sooner than the club track and it builds the reference list the club track needs.
+2. **1.2 Contact enrichment** — 22 Tier A clubs seeded, 13 missing a verified website, all
+   missing an address-and-phone check. Scoped to mailable-and-callable, not email hunting.
+3. **2.3 Newsletter harvesting** — highest-signal, least-contested research available, and
    it directly answers "find private club sources and newsletters."
-3. **3.1 Meta campaign health check** — the moment the 11 ads publish, this stops you
-   opening Ads Manager on your phone.
 
-Then **1.1 in national mode** to start building the Tier C signal net, once Tier A is
-enriched and moving.
+Then **1.2b** once the first letters are drafted, and **1.1 in national mode** to start
+building the Tier C signal net.
 
 Add 4.1 and 4.5 once bookings are flowing, and section 5 once there are deliveries to ask
 about. Sequence matters: a review-request task with no deliveries just runs and reports
@@ -339,4 +384,5 @@ nothing every day until you stop trusting it.
 
 **Before any letter goes out**, stage the items in `ops/club-readiness.md` and answer the
 open questions in `ops/assumptions.md`. Both are quick, and both are load-bearing for
-everything above.
+everything above. Senior living adds two more readiness items — background check and
+vaccination records — that some communities require before a vendor sets foot on site.
