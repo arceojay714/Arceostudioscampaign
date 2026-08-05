@@ -21,4 +21,9 @@ after a GM says yes.
 **Being able to answer all of these inside one business day is a genuine competitive
 advantage** over a solo photographer who cannot, and it is entirely within our control.
 
+**Every item above is now needed per photographer, not just once.** A certificate of
+insurance covering Jay does not admit Lamont to a Raleigh senior living community.
+See `network/photographers.csv` for per-photographer state and
+`docs/photographer-network.md` for the onboarding sequence.
+
 Update this file as items get staged. It gets reviewed the first time any club replies warm.

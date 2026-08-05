@@ -122,6 +122,11 @@ list — this is the one task where Tier C earns its keep.
 
 ### 1.4a — Community segment discovery (W) — **the volume engine**
 
+Runs per metro, rotating through `network/photographers.csv`. Nine metros now, not four —
+see `docs/photographer-network.md`. Prioritize Orange County: four photographers, an
+enormous population, and a heavy concentration of large 55+ and retirement communities.
+That's where the volume model gets proven or disproven fastest.
+
 Churches, senior living, 55+ and HOA communities, lodges, small clubs. Separate list,
 separate rules, public contact info. Full reasoning in `docs/community-segment.md` —
 including why this segment got more urgent: **Lifetouch closed its church photography
@@ -308,6 +313,48 @@ Once a club signs, the job changes from selling the club to filling the slots.
 > we're under 60% booked with a week to go.
 
 ---
+
+## 5b. The photographer network
+
+Ten photographers across eight metros plus Jay. Operating model, economics, quality
+standards and the classification risk all in `docs/photographer-network.md`. Roster and
+onboarding state in `network/photographers.csv`.
+
+### 5b.1 — Roster readiness (W)
+
+> Report every photographer in `network/photographers.csv` missing any of: signed
+> agreement, W-9, insurance confirmation, background check, vaccination records, equipment
+> check, sample review. Flag separately anyone cleared for general work but **not** cleared
+> for senior living — that's the best-margin segment and it has the strictest vendor
+> requirements. Also flag any roster row with missing contact details (Marion's surname and
+> home city, Kole Page's home city, Christian Romero's home city are all outstanding).
+
+### 5b.2 — Capacity vs pipeline (W)
+
+The check that stops the outreach engine from writing cheques the roster can't cash.
+
+> For each metro in `network/photographers.csv`, compare booked and pending work against
+> the number of cleared photographers there. Flag any metro where outreach is producing
+> bookings faster than cleared capacity can deliver, and any metro with cleared
+> photographers and no pipeline at all. Four photographers in Orange County with no bookings
+> is the same problem as one photographer in Atlanta with four — report both.
+
+### 5b.3 — Territory conflicts (M)
+
+> Check `network/photographers.csv` for metros with more than one photographer and no
+> territory split recorded. Orange County currently has four photographers all marked TBD.
+> Propose a split by county sub-region or by segment, and flag any organization in
+> `outreach/community-prospects.csv` that two photographers could both plausibly claim.
+
+### 5b.4 — Print conversion by photographer and segment (M)
+
+The number that tells you whether the commission model is working.
+
+> From `ops/sessions.csv`, report print revenue per session broken down by photographer and
+> by segment. Flag any photographer whose conversion is materially below the roster median
+> — that's usually a fixable process gap, not a bad photographer. Flag any segment where
+> conversion doesn't support the commission structure, because that's a pricing problem and
+> the roster will notice it before we do.
 
 ## 6. The things not on your list — now built
 

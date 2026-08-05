@@ -29,10 +29,30 @@ Discovery is national; effort is not.
 
 ### Tier A — in-person reachable
 
-Anything drivable from Olympia, Kent, Cameron Park, or Piedmont. Currently 22 seeded clubs
-in `outreach/prospects.csv`. These get the **free management shoot** (block
-`03-free-management-shoot`) — Julian photographs the GM, department heads, and board
-officers at the club, free, no obligation.
+**Anything drivable from a metro where a photographer lives.** See
+`network/photographers.csv`. This definition replaces the original "drivable from Jay's
+four markets," and the change promotes a large amount of the country in one move:
+
+| Metro | Photographer(s) |
+|---|---|
+| Olympia / Kent, WA | Julian |
+| Cameron Park / Piedmont, CA | Julian |
+| Sacramento, CA | Valerie Mahood |
+| Orange County, CA | Isaac Medina, Elysha Holborow, Marion, Kole Page |
+| Greater LA / San Fernando Valley | Jacob Medina |
+| Atlanta, GA | David Wagner |
+| Nashville, TN | Richard Yoon |
+| Raleigh–Durham, NC | Lamont Johnson |
+| Connecticut | Christian Romero |
+
+Clubs in all nine are now Tier A, not Tier B or C. Only the 22 WA/CA clubs are seeded so
+far — the discovery task needs to run against the other metros.
+
+Tier A clubs get the **free management shoot** (block `03-free-management-shoot`) —
+the GM, department heads, and board officers photographed at the club, free, no obligation.
+Delivered by the local photographer, which is only credible once that photographer has
+cleared the standards in `docs/photographer-network.md`. A free management shoot is a
+demonstration of quality; sending an unreviewed photographer to one inverts its purpose.
 
 That offer is the single strongest thing in this entire pipeline, and it's the reason the
 local clubs are priority rather than merely convenient. It converts the decision from

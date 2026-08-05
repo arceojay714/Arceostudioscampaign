@@ -1,0 +1,12 @@
+photographer_slug,name,home_city,state,metro,metro_slug,territory,status,agreement_signed,w9,insurance,background_check,vaccination_records,equipment_checked,sample_reviewed,first_shoot_reviewed,segments_cleared,notes
+isaac-medina,Isaac Medina,Midway City,CA,Orange County,orange-county,TBD — 4 photographers in this metro need territory split,roster,no,no,unknown,no,no,no,no,no,,"OC cluster. Highest-capacity metro in the network."
+jacob-medina,Jacob Medina,Northridge,CA,Greater Los Angeles / San Fernando Valley,los-angeles,LA metro — separate from OC,roster,no,no,unknown,no,no,no,no,no,,"Northridge is San Fernando Valley, roughly 50 miles from Orange County. Treat as its own metro, not OC overflow."
+elysha-holborow,Elysha Holborow,Stanton,CA,Orange County,orange-county,TBD — see OC territory split,roster,no,no,unknown,no,no,no,no,no,,
+marion,Marion [surname needed],,CA,Orange County,orange-county,TBD — see OC territory split,roster,no,no,unknown,no,no,no,no,no,,"Surname and home city still needed before an agreement can be issued."
+kole-page,Kole Page,,CA,Orange County,orange-county,TBD — see OC territory split,roster,no,no,unknown,no,no,no,no,no,,"Home city within OC still needed."
+valerie-mahood,Valerie Mahood,Sacramento,CA,Sacramento,sacramento,"Sacramento, El Dorado, Placer",roster,no,no,unknown,no,no,no,no,no,,"Overlaps the existing Cameron Park market — Del Paso, Sutter Club, Serrano, Cameron Park CC are all in her range."
+david-wagner,David Wagner,Atlanta,GA,Atlanta,atlanta,Metro Atlanta,roster,no,no,unknown,no,no,no,no,no,,"GA classification rules more permissive than CA."
+richard-yoon,Richard Yoon,Nashville,TN,Nashville,nashville,Metro Nashville,roster,no,no,unknown,no,no,no,no,no,,"TN classification rules more permissive than CA."
+lamont-johnson,Lamont Johnson,Raleigh,NC,Raleigh-Durham,raleigh,Research Triangle,roster,no,no,unknown,no,no,no,no,no,,"NC classification rules more permissive than CA."
+christian-romero,Christian Romero,,CT,Connecticut,connecticut,Statewide until narrowed,roster,no,no,unknown,no,no,no,no,no,,"Home city needed. CT applies its own ABC test — classification questions similar to CA."
+julian-arceo,Julian Arceo,Olympia,WA,"Olympia / Kent WA, Cameron Park / Piedmont CA",home,Founder — all markets,principal,n/a,n/a,unknown,no,no,yes,n/a,n/a,,"Home markets already seeded in outreach/prospects.csv."
