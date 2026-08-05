@@ -98,14 +98,15 @@ free shoots can actually be delivered.
 
 Practical guardrails:
 
-- **Max 10 new cold contacts per week**, from one mailbox.
-- **Three touches maximum**, then dormant for six months.
-- **Every commercial email carries a real postal address and a working opt-out**, per
-  CAN-SPAM. This isn't optional and it applies to B2B.
-- **Never scrape or guess an email.** If it isn't published, that club gets a letter.
-  Guessed addresses bounce, and bounces are what actually kill deliverability.
-- **Physical mail has no such limits** and, for this audience, a better response rate.
-  Lean into it.
+- **Letters are limited by hand, not by policy.** Print, sign, stamp. A wet signature
+  outperforms, and the effort is a useful governor — you will not mail more than you can
+  follow up by phone.
+- **Two call attempts per letter**, then dormant for six months. The call ceiling is the
+  real constraint on this pipeline: a letter with no follow-up call is wasted postage.
+- **Three touches maximum** across all channels before dormant.
+- **Never guess an email or a website.** Blank is correct. For clubs, blank is expected.
+- **Any commercial email still carries a real postal address and a working opt-out**, per
+  CAN-SPAM — including solicited ones. Routine hygiene, not a constraint on volume.
 
 ## Prospect record schema
 
@@ -125,18 +126,26 @@ Practical guardrails:
 | `website` | |
 | `newsletter_url` | public member newsletter/magazine if one exists |
 | `newsletter_cadence` | monthly · quarterly · none-found |
-| `gm_name`, `membership_director`, `comms_contact` | named humans, not "info@" |
-| `email`, `email_source` | published address + the URL it was published on |
-| `email_status` | found · needs_mail · form-only |
-| `mailing_address` | |
+| `gm_name`, `membership_director`, `comms_contact` | named humans where findable. **Not required to contact** — the letter goes to "General Manager" by title without one. |
+| `phone` | main club number. Required — this is what the call step runs on. |
+| `email`, `email_source` | output of the call, not an input to the letter |
+| `email_status` | **`unknown` is the expected default** · `given` (handed over on a call) · `found` (genuinely published) |
+| `mailing_address` | **the one field that must be right** |
 | `contact_status` | new · enriched · signal-waiting · contacted · replied · won · dormant |
 | `last_touch_date`, `touch_count` | |
 | `signal_notes` | link to the entry in `signals.md` |
 | `owner_notes` | anything Jay knows that research can't find |
 
 `outreach/log.csv` records each touch separately: `club_slug`, `date`, `channel`,
-`touch_number`, `what_was_sent`, `response`. Keeping touches out of the prospect row is
-what makes the follow-up task reliable.
+`touch_number`, `what_was_sent`, `call_outcome`, `gatekeeper_name`, `best_time_to_call`,
+`response`, `next_action_date`. Keeping touches out of the prospect row is what makes the
+follow-up task reliable — and `gatekeeper_name` plus `best_time_to_call` are what make a
+second call land when the first one didn't.
+
+The community segment uses a separate file with a different schema —
+`outreach/community-prospects.csv`, documented in `docs/community-segment.md`. Those
+organizations publish their contacts, so that list is enriched at discovery time and skips
+the letter step entirely.
 
 ## Sources
 
