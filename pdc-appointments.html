@@ -4,40 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Member Portraits | Piedmont Driving Club</title>
-<meta name="description" content="Piedmont Driving Club is rebuilding its member directory. Reserve a portrait sitting.">
+<meta name="description" content="Piedmont Driving Club is rebuilding its member directory. Reserve a complimentary portrait sitting in The Georgian Room.">
 
 <!--
 ================================================================================
-  PASTE-HERE INDEX  —  everything you need to fill in, in one list.
-  Each item below appears again as a comment at the exact spot in the page.
+  PASTE-HERE INDEX  —  everything still to fill in, in one list.
+  Each item reappears as a comment at the exact spot in the page.
 
   [A]  BLOCK 0   Adobe Fonts kit  ....... Proxima Nova + Utopia Std
   [B]  BLOCK 1   Logo image  ............ PDC Crest
   [C]  BLOCK 2   Hero image
-  [D]  BLOCK 5   Dates / times / location / fee
-  [E]  BLOCK 6   ACUITY SCHEDULING  ..... the booking embed or link
-  [F]  BLOCK 7   Gallery images  ........ six slots
-  [G]  BLOCK 10  Contact  ............... name, phone, email
+  [D]  BLOCK 6   Dates and times  ....... location is confirmed
+  [E]  BLOCK 7   ACUITY SCHEDULING  ..... the booking embed or link
+  [F]  BLOCK 8   Gallery images  ........ seven slots
+  [G]  BLOCK 13  Club contact  .......... who members call at PDC
 
-  SEPARATELY — anything wrapped in <span class="fill"> is a claim that could
-  not be sourced from the branding guide or the approved campaign copy deck.
-  It renders with a gold highlight so it cannot ship by accident. Replace the
-  text and drop the class. Search this file for "fill" to find every one.
+  Anything wrapped in <span class="fill"> is still unconfirmed. It renders with
+  a gold highlight so it cannot ship by accident. Search for "fill".
 
-  CONFIRMED SO FAR: location is The Georgian Room. Sitting fee is none, and a
-  complimentary 5x7 is included. Sitting LENGTH is not known — an earlier draft
-  said twenty minutes, which was wrong and has been removed.
+  SOURCED FROM the Arceo program deck ("No-contact" Program Condensed, Drive)
+  and the approved Meta copy deck. Not invented:
+    · two session styles — Business and Branding, Family and Legacy
+    · sessions run 20 - 120 minutes by style and party size
+    · no sitting fees
+    · complimentary "club-edit" retouch
+    · same-session review, the longest part of the visit
+    · optional packages from $150, no minimums
+    · confirmation email plus a courtesy text offering a consultation
+    · The Georgian Room
 ================================================================================
 -->
 
 <!--
   [A] BLOCK 0 — TYPEFACES ------------------------------------------------------
-  Proxima Nova and Utopia Std are the two PDC brand faces. Both are licensed
-  through Adobe Fonts, so they need your kit. Paste the kit <link> below and
-  they will pick up automatically — the CSS already asks for them by name.
-
-  Until then the page falls back to Georgia (for Utopia) and the system sans
-  (for Proxima Nova), which hold the same proportions and will not look broken.
+  Proxima Nova and Utopia Std are the two PDC brand faces, both licensed through
+  Adobe Fonts. Paste your kit <link> below and they pick up automatically — the
+  CSS already asks for them by name. Until then the page falls back to Georgia
+  and the system sans, which hold the same proportions.
 -->
 <!-- <link rel="stylesheet" href="https://use.typekit.net/YOUR-KIT-ID.css"> -->
 
@@ -52,7 +55,7 @@
   --pdc-white:  #ffffff;
   --pdc-gray:   #88898d;   /* Pantone Cool Gray 8 C */
 
-  /* Secondary — see note below before using these */
+  /* Secondary — see the note below before using these */
   --pdc-navy:   #1B1D36;   /* Pantone 4146 C */
   --pdc-gold:   #C1A01F;   /* Pantone 7753 C */
 
@@ -74,19 +77,15 @@
 
 /* NOTE ON GOLD — the guide restricts the gold/dark-blue pair to the Horseshoe
    logo (Golf and Athletics). It also permits gold as a foil on "invitations,
-   directories, brochures." This page is directory collateral, so gold appears
-   only as a hairline rule, never as type or fill. To drop it entirely, set
+   directories, brochures." This is directory collateral, so gold appears only
+   as a hairline rule, never as type or fill. To drop it entirely, set
    --pdc-gold to var(--pdc-gray) above and nothing else changes. */
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--sans);
-  font-size:17px;
-  line-height:1.65;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;height:auto;display:block}
@@ -109,14 +108,10 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
   font-weight:600;color:var(--pdc-gray);margin-bottom:.85rem
 }
 .lede{font-size:clamp(1.05rem,2vw,1.24rem);line-height:1.55;color:var(--ink-soft)}
-
-/* Gold hairline — the foil analogue */
 .hair{width:3.5rem;height:2px;background:var(--pdc-gold);border:0;margin:0}
 
-/* Unverified copy marker. Every .fill below is a fact that could not be
-   sourced from the branding guide or the approved campaign copy deck.
-   Replace the text, then delete the class. Search the file for "fill" to
-   find them all. Delete this rule once none remain. */
+/* Unverified copy marker. Every .fill is a claim that could not be sourced.
+   Replace the text, then delete the class. Delete this rule once none remain. */
 .fill{
   background:#fff6d6;border-bottom:2px solid var(--pdc-gold);
   padding:0 .18em;color:#6b5410;font-style:normal
@@ -129,25 +124,20 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
    Centred-below is used here. Do not reposition. */
 .nameplate{
   font-family:var(--serif);color:var(--pdc-blue);
-  font-size:1.02rem;letter-spacing:.15em;text-transform:uppercase;
-  margin-top:.9rem
+  font-size:1.02rem;letter-spacing:.15em;text-transform:uppercase;margin-top:.9rem
 }
 
 /* --- Image slots ---------------------------------------------------------- */
-/* A slot shows a labelled placeholder until a real image loads over it.
-   The inline onerror on each <img> hides the broken image so you never see a
-   torn-page icon — just the label telling you what belongs there. */
+/* A slot shows a labelled placeholder until a real image loads over it. The
+   inline onerror hides the broken image so you never see a torn-page icon. */
 .slot{
   position:relative;background:var(--wash-deep);
-  display:grid;place-items:center;overflow:hidden;
-  border:1px solid var(--rule);
+  display:grid;place-items:center;overflow:hidden;border:1px solid var(--rule);
 }
 .slot::after{
-  content:attr(data-slot);
-  position:absolute;inset:0;display:grid;place-items:center;
+  content:attr(data-slot);position:absolute;inset:0;display:grid;place-items:center;
   font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--pdc-gray);text-align:center;padding:1rem;line-height:1.7;
-  pointer-events:none;
+  color:var(--pdc-gray);text-align:center;padding:1rem;line-height:1.7;pointer-events:none;
 }
 .slot img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
 .slot.tall{aspect-ratio:4/5}
@@ -161,41 +151,54 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 .btn{
   display:inline-block;background:var(--pdc-blue);color:var(--pdc-white);
   text-decoration:none;font-weight:600;font-size:.94rem;
-  letter-spacing:.09em;text-transform:uppercase;
-  padding:1rem 2rem;border:1px solid var(--pdc-blue);
-  transition:background .15s ease,color .15s ease;
+  letter-spacing:.09em;text-transform:uppercase;padding:1rem 2rem;
+  border:1px solid var(--pdc-blue);transition:background .15s ease,color .15s ease;
 }
 .btn:hover,.btn:focus-visible{background:var(--pdc-navy);border-color:var(--pdc-navy)}
 .btn-ghost{background:transparent;color:var(--pdc-blue)}
 .btn-ghost:hover,.btn-ghost:focus-visible{background:var(--pdc-blue);color:var(--pdc-white)}
 .btn-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
 
-/* --- Included list -------------------------------------------------------- */
-.included{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-@media(min-width:44rem){.included{grid-template-columns:1fr 1fr}}
-.included li{background:var(--paper);padding:1.4rem 1.5rem}
-.included h3{margin-bottom:.3rem}
-.included p{color:var(--ink-soft);font-size:.95rem}
+/* --- Card grids ----------------------------------------------------------- */
+.grid2{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(min-width:44rem){.grid2{grid-template-columns:1fr 1fr}}
+.grid2 > li,.grid2 > div{background:var(--paper);padding:1.4rem 1.5rem;list-style:none}
+.grid2 h3{margin-bottom:.3rem}
+.grid2 p{color:var(--ink-soft);font-size:.95rem}
+ul.grid2{margin:0;padding:0}
+
+/* --- Session styles ------------------------------------------------------- */
+.sessions{display:grid;gap:1.5rem}
+@media(min-width:52rem){.sessions{grid-template-columns:1fr 1fr;gap:2rem}}
+.session{border:1px solid var(--rule);display:flex;flex-direction:column}
+.session .head{background:var(--pdc-blue);color:var(--pdc-white);padding:1.4rem 1.6rem}
+.session .head h3{color:var(--pdc-white);font-size:1.3rem}
+.session .head .kind{
+  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:.4rem
+}
+.session .body{padding:1.5rem 1.6rem;display:flex;flex-direction:column;gap:1.1rem;flex:1}
+.session dl{margin:0;display:flex;flex-direction:column;gap:.9rem}
+.session dt{font-family:var(--serif);color:var(--pdc-blue);font-size:1rem}
+.session dd{margin:.15rem 0 0;color:var(--ink-soft);font-size:.94rem}
 
 /* --- Steps ---------------------------------------------------------------- */
 .steps{list-style:none;counter-reset:step;margin:0;padding:0;display:grid;gap:1.5rem}
-@media(min-width:48rem){.steps{grid-template-columns:repeat(3,1fr);gap:2.25rem}}
+@media(min-width:48rem){.steps{grid-template-columns:repeat(4,1fr);gap:1.75rem}}
 .steps li{counter-increment:step;padding-top:1.1rem;border-top:2px solid var(--pdc-blue)}
 .steps li::before{
-  content:"0" counter(step);
-  display:block;font-family:var(--serif);color:var(--pdc-gold);
-  font-size:.86rem;letter-spacing:.12em;margin-bottom:.5rem
+  content:"0" counter(step);display:block;font-family:var(--serif);
+  color:var(--pdc-gold);font-size:.86rem;letter-spacing:.12em;margin-bottom:.5rem
 }
 .steps h3{margin-bottom:.35rem}
-.steps p{color:var(--ink-soft);font-size:.95rem}
+.steps p{color:var(--ink-soft);font-size:.94rem}
 
 /* --- Detail bar ----------------------------------------------------------- */
-/* The vertical bar between items is the Club's own convention for separating
-   times, dates, and prices on one line. */
+/* The vertical bar is the Club's own convention for separating times, dates,
+   and prices on one line. */
 .detail{
-  border-block:1px solid var(--rule);padding-block:1.6rem;
-  display:flex;flex-wrap:wrap;justify-content:center;
-  gap:.6rem 1.4rem;text-align:center
+  border-block:1px solid var(--rule);padding-block:1.6rem;display:flex;
+  flex-wrap:wrap;justify-content:center;gap:.6rem 1.4rem;text-align:center
 }
 .detail div{display:flex;align-items:center;gap:1.4rem}
 .detail div:not(:last-child)::after{content:"|";color:var(--pdc-gray)}
@@ -206,12 +209,7 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 .booking{background:var(--pdc-blue);color:var(--pdc-white)}
 .booking h2,.booking .eyebrow{color:var(--pdc-white)}
 .booking .lede{color:rgba(255,255,255,.82)}
-.booking .btn{background:var(--pdc-white);color:var(--pdc-blue);border-color:var(--pdc-white)}
-.booking .btn:hover,.booking .btn:focus-visible{background:var(--pdc-gold);border-color:var(--pdc-gold);color:var(--pdc-navy)}
-.embed{
-  background:var(--pdc-white);margin-top:2rem;padding:.5rem;
-  min-height:640px;display:grid;place-items:center
-}
+.embed{background:var(--pdc-white);margin-top:2rem;padding:.5rem;min-height:640px;display:grid;place-items:center}
 .embed iframe{width:100%;min-height:620px;border:0;display:block}
 .embed-note{
   color:var(--pdc-gray);font-size:.72rem;letter-spacing:.15em;
@@ -232,8 +230,7 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 .faq details{border-bottom:1px solid var(--rule)}
 .faq summary{
   cursor:pointer;padding:1.25rem 2.5rem 1.25rem 0;position:relative;
-  font-family:var(--serif);font-size:1.08rem;color:var(--pdc-blue);
-  list-style:none
+  font-family:var(--serif);font-size:1.08rem;color:var(--pdc-blue);list-style:none
 }
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{
@@ -242,24 +239,23 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 }
 .faq details[open] summary::after{content:"–"}
 .faq summary:focus-visible{outline:2px solid var(--pdc-blue);outline-offset:2px}
-.faq .answer{padding:0 0 1.4rem;color:var(--ink-soft);max-width:var(--measure)}
+.faq .answer{padding:0 0 1.4rem;color:var(--ink-soft);max-width:44rem}
 
 /* --- Footer --------------------------------------------------------------- */
 .foot{background:var(--pdc-navy);color:rgba(255,255,255,.72);font-size:.9rem}
 .foot a{color:var(--pdc-white)}
 .foot .inner{display:grid;gap:2rem;padding-block:3rem}
-@media(min-width:48rem){.foot .inner{grid-template-columns:1fr auto}}
+@media(min-width:48rem){.foot .inner{grid-template-columns:1fr 1fr}}
 .foot strong{
-  color:var(--pdc-white);font-family:var(--serif);font-weight:600;
-  font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
-  display:block;margin-bottom:.6rem
+  color:var(--pdc-white);font-family:var(--serif);font-weight:600;font-size:1rem;
+  letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.6rem
 }
 .foot em{font-style:italic}
 .rule-gold{height:2px;background:var(--pdc-gold);border:0;margin:0}
 
 @media print{
   .booking,.foot{background:var(--pdc-white)!important;color:var(--pdc-black)!important}
-  .booking h2,.booking .lede{color:var(--pdc-black)!important}
+  .booking h2,.booking .lede,.foot strong,.foot a{color:var(--pdc-black)!important}
   .slot{display:none}
 }
 </style>
@@ -268,10 +264,10 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 
 <!-- ==========================================================================
      [B] BLOCK 1 — MASTHEAD
-     Swap the src below for the PDC Crest. The Crest is the primary logo and the
-     correct one for a communication of this kind (Club staff and management).
-     Use the graphic rendering in PDC blue — not the hand-sketched version, and
-     not the Horseshoe, which belongs to Golf and Athletics.
+     Swap the src for the PDC Crest. The Crest is the primary logo and the
+     correct one for a communication from Club staff and management. Use the
+     graphic rendering in PDC blue — not the hand-sketched version, and not the
+     Horseshoe, which belongs to Golf and Athletics.
      Request the file from the Communications Department.
      ====================================================================== -->
 <header class="masthead">
@@ -300,15 +296,13 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       <p class="lede">
         Piedmont Driving Club is rebuilding its member directory this fall.
         Your name is already on file, your account, your locker. One portrait
-        is the only thing still missing.
+        is the only thing still missing — and there is no sitting fee.
       </p>
       <div class="btn-row">
         <a class="btn" href="#book">Reserve Your Sitting</a>
-        <a class="btn btn-ghost" href="#included">What Is Included</a>
+        <a class="btn btn-ghost" href="#sessions">The Two Session Styles</a>
       </div>
     </div>
-
-    <!-- Hero image. A single strong portrait works better here than a group. -->
     <div class="slot tall" data-slot="[C] Hero portrait — vertical 4:5">
       <img src="REPLACE--hero.jpg" alt="" onerror="this.style.display='none'">
     </div>
@@ -324,75 +318,155 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       <p class="eyebrow">The Sitting</p>
       <h2>What Is Included</h2>
     </div>
-    <ul class="included">
+    <ul class="grid2">
+      <li>
+        <h3>No Sitting Fee</h3>
+        <p>Every member sits at no charge. Nothing is required of you beyond
+           the time.</p>
+      </li>
       <li>
         <h3>A Directed Sitting</h3>
-        <p>Your Photographer, Julian, directs the sitting the whole way through.
-           Posing is not your job.</p>
+        <p>Julian Arceo directs the whole way through, guiding you through a
+           range of curated poses. Posing is not your job.</p>
       </li>
       <li>
-        <h3>Retouching</h3>
-        <p>Retouching is included with every sitting.</p>
-      </li>
-      <li>
-        <h3>A Complimentary 5x7</h3>
-        <p>One finished print, included with every sitting.</p>
+        <h3>A Complimentary Club-Edit</h3>
+        <p>Every directory portrait is retouched to keep you recognizable to
+           team members while softening any unwanted details.</p>
       </li>
       <li>
         <h3>Your Directory Portrait</h3>
-        <p>Your portrait is added to the Club directory.</p>
+        <p>One shared background photograph goes to the Club for the membership
+           album, the POS system, and the staff training directory.</p>
       </li>
     </ul>
   </div>
 </section>
 
 <!-- ==========================================================================
-     BLOCK 4 — HOW IT WORKS
+     BLOCK 4 — THE TWO SESSION STYLES
+     Sourced from the Arceo program deck. Members choose one when booking.
      ====================================================================== -->
-<section>
+<section id="sessions">
   <div class="wrap stack-lg">
     <div class="narrow">
-      <p class="eyebrow">Three Steps</p>
+      <p class="eyebrow">Choose One</p>
+      <h2>Two Session Styles</h2>
+      <p class="lede" style="margin-top:1rem">
+        You choose your style when you book. Both produce the same standard
+        hand-painted background portrait for the Club, so the directory stays
+        cohesive, and both give you a tailored shoot for your own use.
+      </p>
+    </div>
+
+    <div class="sessions">
+      <article class="session">
+        <div class="head">
+          <p class="kind">Session Style</p>
+          <h3>Business and Branding</h3>
+        </div>
+        <div class="body">
+          <p>A pre-planned and efficient process for the everyday business
+             person.</p>
+          <dl>
+            <div>
+              <dt>Office Space Background</dt>
+              <dd>A customized background for personal branding — targeted
+                  emails, website pages — using either Club space or a
+                  photographic background.</dd>
+            </div>
+            <div>
+              <dt>White or Gray Background</dt>
+              <dd>The common branding approach, which allows for .PNG files for
+                  promotional material and digital background applications.</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="session">
+        <div class="head">
+          <p class="kind">Session Style</p>
+          <h3>Family and Legacy</h3>
+        </div>
+        <div class="body">
+          <p>A refined and guided experience from start to finish. These
+             sessions run longer than the others.</p>
+          <dl>
+            <div>
+              <dt>A Pre-Shoot Consultation</dt>
+              <dd>Every booking comes with a personal text offering shoot advice
+                  beyond the material sent to you.</dd>
+            </div>
+            <div>
+              <dt>Multiple Poses</dt>
+              <dd>A variety of curated poses in front of the painted backdrop.</dd>
+            </div>
+            <div>
+              <dt>A Thorough Review</dt>
+              <dd>Culling, retouching, and any optional purchasing are finished
+                  during the review. Families may request an online gallery.</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 5 — HOW IT WORKS
+     ====================================================================== -->
+<section class="tint">
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">Start To Finish</p>
       <h2>How It Works</h2>
     </div>
     <ol class="steps">
       <li>
-        <h3>Choose Your Time</h3>
-        <p>Pick any open slot below.</p>
+        <h3>Book Your Time</h3>
+        <p>Choose an open slot below and pick the session style you prefer.</p>
+      </li>
+      <li>
+        <h3>Confirmation and Consultation</h3>
+        <p>You receive a confirmation email and a courtesy text offering a
+           consultation before the day.</p>
       </li>
       <li>
         <h3>Sit for Your Portrait</h3>
-        <p>Arrive as you are. Julian handles the rest.</p>
+        <p>Arrive as you are. Julian directs the sitting from start to finish.</p>
       </li>
       <li>
-        <h3>Review and Select</h3>
-        <p><span class="fill">FILL — describe how members review and choose
-           their frame</span></p>
+        <h3>Review, Same Session</h3>
+        <p>You sit down with Julian and review your shots then and there. This
+           is the longest part of the visit.</p>
       </li>
     </ol>
   </div>
 </section>
 
 <!-- ==========================================================================
-     [D] BLOCK 5 — SESSION DETAIL BAR
-     Fill in the four values below. Formats follow the Club style guide:
-       dates  — no ordinals, month spelled out, en dash with spaces
-                e.g. "October 11 - 14"  (not "October 11th-14th")
-       times  — lowercase, with periods, no spaces
-                e.g. "9 a.m. - 5 p.m."  |  "10:30 a.m."
-     Location is confirmed: The Georgian Room. Dates and times still needed.
+     [D] BLOCK 6 — SESSION DETAIL BAR
+     Location confirmed: The Georgian Room. Length confirmed: 20 - 120 minutes.
+     Dates and times still needed. Formats follow the Club style guide:
+       dates — no ordinals, month spelled out, en dash with spaces
+               e.g. "October 11 - 14"   (not "October 11th-14th")
+       times — lowercase, with periods, no spaces
+               e.g. "9 a.m. - 5 p.m."   |   "10:30 a.m."
      ====================================================================== -->
 <div class="wrap">
   <dl class="detail">
     <div><dt>Dates</dt><dd><span class="fill">FILL — October 11 - 14</span></dd></div>
     <div><dt>Times</dt><dd><span class="fill">FILL — 9 a.m. - 5 p.m.</span></dd></div>
     <div><dt>Location</dt><dd>The Georgian Room</dd></div>
+    <div><dt>Length</dt><dd>20 - 120 minutes</dd></div>
     <div><dt>Sitting Fee</dt><dd>None</dd></div>
   </dl>
 </div>
 
 <!-- ==========================================================================
-     [E] BLOCK 6 — ACUITY SCHEDULING  ← the main insertion point
+     [E] BLOCK 7 — ACUITY SCHEDULING  ← the main insertion point
      ====================================================================== -->
 <section class="booking" id="book">
   <div class="wrap stack-lg">
@@ -400,31 +474,29 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       <p class="eyebrow">Reserve</p>
       <h2>Choose Your Time</h2>
       <p class="lede" style="margin-top:1rem">
-        Sittings take place in The Georgian Room.
-        <span class="fill">FILL — optional second line, e.g. what to do if no
-        listed time suits</span>
+        Sittings take place in The Georgian Room. Choose your session style as
+        you book, and note how many people will be in the frame.
       </p>
     </div>
 
     <div class="embed">
       <!--
-        PASTE YOUR ACUITY EMBED HERE, replacing this whole comment block and the
-        .embed-note div directly beneath it.
+        PASTE YOUR ACUITY EMBED HERE, replacing this comment and the
+        .embed-note paragraph directly beneath it.
 
         OPTION 1 — inline embed (recommended; members never leave the page).
         From Acuity: Client Scheduling Page → Customize Appearance → Embed.
-        It looks like this:
 
         <iframe src="https://app.acuityscheduling.com/schedule.php?owner=OWNER_ID"
                 title="Schedule an appointment" width="100%" height="800"
                 frameborder="0"></iframe>
         <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
 
-        To open one specific appointment type instead of the full menu, append
-        &appointmentType=TYPE_ID to the src.
+        Consider one Acuity appointment type per session style — Business and
+        Branding, and Family and Legacy — since their lengths differ sharply.
+        Append &appointmentType=TYPE_ID to open one directly.
 
-        OPTION 2 — button out to Acuity. Delete the .embed wrapper entirely and
-        use this in its place:
+        OPTION 2 — button out to Acuity. Delete the .embed wrapper and use:
 
         <div class="btn-row"><a class="btn" href="YOUR-ACUITY-URL">Book a Sitting</a></div>
       -->
@@ -437,12 +509,11 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 </section>
 
 <!-- ==========================================================================
-     [F] BLOCK 7 — GALLERY
-     Six slots. Replace each src with an image URL from your email gallery.
-     Keep the alt text — it is what a member using a screen reader hears, and
-     empty alt on a portrait grid reads as six unlabelled blanks.
-     Portraits crop to 4:5. If a source file is landscape it will centre-crop,
-     so check faces are not cut.
+     [F] BLOCK 8 — GALLERY
+     Replace each src with an image URL from the email gallery. Keep the alt
+     text — empty alt on a portrait grid reads as six unlabelled blanks to a
+     member using a screen reader. Portraits crop to 4:5, so check that faces
+     are not cut on any landscape source file.
      ====================================================================== -->
 <section>
   <div class="wrap stack-lg">
@@ -474,7 +545,7 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 </section>
 
 <!-- ==========================================================================
-     BLOCK 8 — REASSURANCE
+     BLOCK 9 — REASSURANCE
      This is the block that books the members who think they photograph badly.
      ====================================================================== -->
 <section class="tint">
@@ -488,7 +559,7 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 </section>
 
 <!-- ==========================================================================
-     BLOCK 9 — FAMILY
+     BLOCK 10 — FAMILY
      ====================================================================== -->
 <section>
   <div class="wrap stack-lg">
@@ -497,7 +568,8 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       <h2>Every Generation In One Frame</h2>
       <p class="lede">
         Spouse, children, and grandchildren are every one of them welcome in the
-        frame. <span class="fill">FILL — how to book a family sitting</span>
+        frame. Choose the Family and Legacy style when you book, and allow the
+        longer end of the schedule — larger groups take more time.
       </p>
     </div>
     <div class="slot wide" data-slot="[F] Family portrait — landscape 16:9">
@@ -507,62 +579,112 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 </section>
 
 <!-- ==========================================================================
-     BLOCK 10 — FAQ
+     BLOCK 11 — AFTER YOUR SITTING
+     Prices are from the Arceo program deck. If PDC would rather members not see
+     pricing before they arrive, delete the third card — nothing else depends
+     on it.
      ====================================================================== -->
 <section class="tint">
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">Afterwards</p>
+      <h2>After Your Sitting</h2>
+    </div>
+    <div class="grid2">
+      <div>
+        <h3>You Review, Then and There</h3>
+        <p>You sit down with Julian in the same session and go through your
+           shots — both the one for the Club and any that interest you.</p>
+      </div>
+      <div>
+        <h3>The Club-Edit Is Complimentary</h3>
+        <p>Your directory portrait is retouched at no charge. Additional
+           retouching is available for personal use.</p>
+      </div>
+      <div>
+        <h3>Prints and Digitals Are Optional</h3>
+        <p>Tailored packages begin at $150, with bundles and bulk discounts.
+           There are no minimums and no pressure — nothing is required of you.</p>
+      </div>
+      <div>
+        <h3>Families May Request a Gallery</h3>
+        <p>Family and Legacy sittings can be reviewed through an online gallery
+           instead, if that suits you better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 12 — FAQ
+     ====================================================================== -->
+<section>
   <div class="wrap stack-lg">
     <div class="narrow">
       <p class="eyebrow">Before You Come</p>
       <h2>Questions</h2>
     </div>
-    <div class="faq narrow" style="max-width:44rem">
+    <div class="faq">
+      <details>
+        <summary>How long does it take?</summary>
+        <div class="answer">Between 20 and 120 minutes, depending on the session
+          style you choose and how many people are in the frame. Business and
+          Branding sittings are the quickest. Family and Legacy sittings run
+          longest, because the review happens in the same visit.</div>
+      </details>
+      <details>
+        <summary>Which session style should I choose?</summary>
+        <div class="answer">Business and Branding if you want an efficient
+          sitting and a headshot you can use professionally. Family and Legacy
+          if you are bringing people with you, or want the longer guided
+          experience with a full review.</div>
+      </details>
       <details>
         <summary>What should I wear?</summary>
         <div class="answer">Coat and tie are required for gentlemen aged 14 and
           older in The Main Clubhouse, and The Georgian Room sits within it.
-          <span class="fill">FILL — any wardrobe guidance from Julian</span></div>
-      </details>
-      <details>
-        <summary>How long does it take?</summary>
-        <div class="answer"><span class="fill">FILL — sitting length. The earlier
-          "twenty minutes" was wrong and has been removed.</span></div>
+          Every booking also comes with a personal text from your photographer
+          offering advice ahead of the day, so you can ask then.</div>
       </details>
       <details>
         <summary>May I bring my family?</summary>
         <div class="answer">Yes. Spouse, children, and grandchildren are every
-          one of them welcome in the frame.
-          <span class="fill">FILL — how to book a family slot</span></div>
+          one of them welcome in the frame. Choose the Family and Legacy style
+          when you book and note how many are attending.</div>
       </details>
       <details>
         <summary>I photograph badly. Is this going to work?</summary>
         <div class="answer">It is the most common thing members say, and it is
-          the part you are not responsible for. Julian directs the sitting —
-          posture, angle, and expression are his job.</div>
-      </details>
-      <details>
-        <summary>Who sees the portrait?</summary>
-        <div class="answer"><span class="fill">FILL — who reviews the frames,
-          who selects, and what reaches the directory</span></div>
+          the part you are not responsible for. Julian guides and directs you
+          through a range of curated poses — posture, angle, and expression are
+          his job, not yours.</div>
       </details>
       <details>
         <summary>Is there a charge?</summary>
-        <div class="answer">There is no sitting fee, and one complimentary 5x7
-          is included. <span class="fill">FILL — whether additional prints or
-          files may be purchased</span></div>
+        <div class="answer">There is no sitting fee, and the club-edit retouch
+          of your directory portrait is complimentary. Prints and digital files
+          are entirely optional, with tailored packages beginning at $150 and no
+          minimums.</div>
+      </details>
+      <details>
+        <summary>Where does my portrait go?</summary>
+        <div class="answer">One shared background portrait goes to the Club for
+          the membership album, the POS system, and the staff training
+          directory. Everything else from your sitting is yours.</div>
       </details>
       <details>
         <summary>What if I cannot make any of the times?</summary>
-        <div class="answer"><span class="fill">FILL — who to contact and how
-          alternate times are handled</span></div>
+        <div class="answer"><span class="fill">FILL — who members contact at PDC
+          and how alternate times are handled</span></div>
       </details>
     </div>
   </div>
 </section>
 
 <!-- ==========================================================================
-     BLOCK 11 — CLOSING CALL TO ACTION
+     BLOCK 13 — CLOSING CALL TO ACTION
      ====================================================================== -->
-<section>
+<section class="tint">
   <div class="wrap">
     <div class="narrow stack-lg" style="text-align:center;margin-inline:auto">
       <div>
@@ -570,8 +692,8 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
         <h2>A Portrait On File Is All It Takes</h2>
       </div>
       <hr class="hair" style="margin-inline:auto">
-      <p class="lede">Staff greet you by name from day one. This is the part that
-         lets the rest of the membership do the same.</p>
+      <p class="lede">Team members greet you by name from day one. This is the
+         part that lets the rest of the membership do the same.</p>
       <div class="btn-row" style="justify-content:center">
         <a class="btn" href="#book">Reserve Your Sitting</a>
       </div>
@@ -582,12 +704,16 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 <hr class="rule-gold">
 
 <!-- ==========================================================================
-     [G] BLOCK 12 — FOOTER
-     Phone format per the style guide: figures and hyphens, never periods.
+     [G] FOOTER
+     Phone format per the style guide: figures and hyphens, never periods
        404-875-2565   and with an extension:  404-875-2565, ext. 285
-     Email in body text is italicized in brackets, which is why the address
-     below is set that way.
-     Web addresses drop "http://" and "www."
+     Emails in body text are italicized in brackets. Web addresses drop
+     "http://" and "www."
+
+     NOTE — the PDC contact for this program is Dael Szuch
+     [dszuch@drivingclub.com], but that is a staff address, not necessarily the
+     one members should be given. Confirm who members should call before
+     publishing, and use the Front Desk number if in doubt.
      ====================================================================== -->
 <footer class="foot">
   <div class="wrap inner">
@@ -596,17 +722,15 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       1215 Piedmont Avenue NE<br>
       Atlanta, Georgia 30309<br>
       <span style="display:inline-block;margin-top:.6rem">
-        Front Desk <a href="tel:REPLACE">REPLACE — 000-000-0000</a>
+        <span class="fill">FILL — Front Desk, 000-000-0000</span>
       </span>
     </div>
     <div>
       <strong>Portraits By</strong>
       Arceo Studio Collective<br>
-      <a href="https://arceostudiocollective.com">arceostudiocollective.com</a><br>
-      <span style="display:inline-block;margin-top:.6rem">
-        Questions, contact REPLACE — Name, Title
-        <em>[REPLACE--email@drivingclub.com]</em>
-      </span>
+      Julian Arceo, Owner and Head Photographer<br>
+      <em>[julian@arceostudiocollective.com]</em><br>
+      <a href="https://arceostudiocollective.com">arceostudiocollective.com</a>
     </div>
   </div>
 </footer>

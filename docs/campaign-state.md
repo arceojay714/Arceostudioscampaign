@@ -46,14 +46,34 @@ Built as `pdc-appointments.html`, to the PDC branding guide (rev. January 2022).
 
 **Corrected — do not reintroduce:**
 
-- ❌ **Sitting length is NOT twenty minutes.** A draft asserted "twenty minutes"
-  and "finished inside half an hour". Both were invented and are wrong. The real
-  length is still unconfirmed — leave it as a `fill` slot until someone supplies it.
+- ❌ **Sitting length is NOT twenty minutes.** 20 is the *floor of a range*.
+  Sessions run **20 - 120 minutes**, set by session style and party size.
 
-**Still unconfirmed** (marked `<span class="fill">` in the HTML, gold highlight so
-they cannot ship unnoticed): dates, times, the review-and-select process, who sees
-the frames, family booking method, wardrobe guidance, whether extra prints are
-sold, and the alternate-time contact.
+**Program facts** — all from the Arceo deck, `"No-contact" Program Condensed`
+(Drive, `1EkoFtLa8fuGIj_xJXwikcgI-4mVjFKPwYPgIkxBhN9g`). Use this as the source
+of truth for member-facing copy:
+
+- **Two session styles**, chosen at booking:
+  - *Business and Branding* — efficient; Office Space background, or White/Gray
+    background for .PNG promotional use.
+  - *Family and Legacy* — longer; pre-shoot consultation by text, multiple
+    curated poses, thorough review, optional online gallery for families.
+- Both styles produce **one shared hand-painted background portrait** for Club
+  use: membership album, POS system, staff training directory.
+- **No sitting fees.**
+- **Complimentary "club-edit"** retouch — keeps members recognizable to team
+  members while softening unwanted details. Extra retouching sold for personal use.
+- **Review happens in the same session** and is usually the longest portion.
+- **Optional packages from $150**, bundles and bulk discounts, no minimums.
+- Booking via website, form, email, text, or call. Members get a **confirmation
+  email plus a courtesy text** offering a pre-session consultation.
+
+**PDC contact:** Dael Szuch, `dszuch@drivingclub.com` (handled the 2026-2027
+proposal). Backup: Rachael Freedland, `rfreedland@drivingclub.com`. Both are
+staff addresses — confirm what members should be given before publishing.
+
+**Still unconfirmed** (marked `<span class="fill">`, gold highlight, cannot ship
+unnoticed): dates, times, the Front Desk number, and the alternate-time contact.
 
 ## Egress limitation — read before promising a site audit
 
