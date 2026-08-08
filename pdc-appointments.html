@@ -18,6 +18,15 @@
   [E]  BLOCK 6   ACUITY SCHEDULING  ..... the booking embed or link
   [F]  BLOCK 7   Gallery images  ........ six slots
   [G]  BLOCK 10  Contact  ............... name, phone, email
+
+  SEPARATELY — anything wrapped in <span class="fill"> is a claim that could
+  not be sourced from the branding guide or the approved campaign copy deck.
+  It renders with a gold highlight so it cannot ship by accident. Replace the
+  text and drop the class. Search this file for "fill" to find every one.
+
+  CONFIRMED SO FAR: location is The Georgian Room. Sitting fee is none, and a
+  complimentary 5x7 is included. Sitting LENGTH is not known — an earlier draft
+  said twenty minutes, which was wrong and has been removed.
 ================================================================================
 -->
 
@@ -103,6 +112,15 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
 
 /* Gold hairline — the foil analogue */
 .hair{width:3.5rem;height:2px;background:var(--pdc-gold);border:0;margin:0}
+
+/* Unverified copy marker. Every .fill below is a fact that could not be
+   sourced from the branding guide or the approved campaign copy deck.
+   Replace the text, then delete the class. Search the file for "fill" to
+   find them all. Delete this rule once none remain. */
+.fill{
+  background:#fff6d6;border-bottom:2px solid var(--pdc-gold);
+  padding:0 .18em;color:#6b5410;font-style:normal
+}
 
 /* --- Masthead ------------------------------------------------------------- */
 .masthead{border-bottom:1px solid var(--rule);padding-block:1.75rem;text-align:center}
@@ -309,22 +327,20 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
     <ul class="included">
       <li>
         <h3>A Directed Sitting</h3>
-        <p>Twenty minutes with your Photographer, Julian. He directs the whole
-           way through — where to stand, where to look, what to do with your hands.</p>
+        <p>Your Photographer, Julian, directs the sitting the whole way through.
+           Posing is not your job.</p>
       </li>
       <li>
         <h3>Retouching</h3>
-        <p>Every frame you choose is retouched by hand before it reaches you or
-           the directory.</p>
+        <p>Retouching is included with every sitting.</p>
       </li>
       <li>
         <h3>A Complimentary 5x7</h3>
-        <p>One finished print to take home, included with every sitting.</p>
+        <p>One finished print, included with every sitting.</p>
       </li>
       <li>
         <h3>Your Directory Portrait</h3>
-        <p>Your selected frame is added to the Club directory. Nothing is
-           published without your approval.</p>
+        <p>Your portrait is added to the Club directory.</p>
       </li>
     </ul>
   </div>
@@ -342,18 +358,16 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
     <ol class="steps">
       <li>
         <h3>Choose Your Time</h3>
-        <p>Pick any open slot below. Sittings run back to back, so the time you
-           choose is the time you are seen.</p>
+        <p>Pick any open slot below.</p>
       </li>
       <li>
         <h3>Sit for Your Portrait</h3>
-        <p>Arrive as you are. Julian handles the rest. Most members are finished
-           inside half an hour.</p>
+        <p>Arrive as you are. Julian handles the rest.</p>
       </li>
       <li>
         <h3>Review and Select</h3>
-        <p>You see every frame before anyone else does, and you choose the one
-           that goes on file.</p>
+        <p><span class="fill">FILL — describe how members review and choose
+           their frame</span></p>
       </li>
     </ol>
   </div>
@@ -366,14 +380,13 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
                 e.g. "October 11 - 14"  (not "October 11th-14th")
        times  — lowercase, with periods, no spaces
                 e.g. "9 a.m. - 5 p.m."  |  "10:30 a.m."
-       room   — a Main Clubhouse room name, capitalized
-                e.g. the Byrd Room, the Walker Room, the Georgian Room
+     Location is confirmed: The Georgian Room. Dates and times still needed.
      ====================================================================== -->
 <div class="wrap">
   <dl class="detail">
-    <div><dt>Dates</dt><dd>REPLACE — e.g. October 11 - 14</dd></div>
-    <div><dt>Times</dt><dd>REPLACE — e.g. 9 a.m. - 5 p.m.</dd></div>
-    <div><dt>Location</dt><dd>REPLACE — e.g. The Byrd Room</dd></div>
+    <div><dt>Dates</dt><dd><span class="fill">FILL — October 11 - 14</span></dd></div>
+    <div><dt>Times</dt><dd><span class="fill">FILL — 9 a.m. - 5 p.m.</span></dd></div>
+    <div><dt>Location</dt><dd>The Georgian Room</dd></div>
     <div><dt>Sitting Fee</dt><dd>None</dd></div>
   </dl>
 </div>
@@ -387,8 +400,9 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       <p class="eyebrow">Reserve</p>
       <h2>Choose Your Time</h2>
       <p class="lede" style="margin-top:1rem">
-        Sittings are reserved in the order they are booked. If nothing suits your
-        day, call the Front Desk and a time will be arranged for you.
+        Sittings take place in The Georgian Room.
+        <span class="fill">FILL — optional second line, e.g. what to do if no
+        listed time suits</span>
       </p>
     </div>
 
@@ -483,8 +497,7 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       <h2>Every Generation In One Frame</h2>
       <p class="lede">
         Spouse, children, and grandchildren are every one of them welcome in the
-        frame. Book a single slot for the family and note the number attending
-        when you reserve.
+        frame. <span class="fill">FILL — how to book a family sitting</span>
       </p>
     </div>
     <div class="slot wide" data-slot="[F] Family portrait — landscape 16:9">
@@ -505,20 +518,20 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
     <div class="faq narrow" style="max-width:44rem">
       <details>
         <summary>What should I wear?</summary>
-        <div class="answer">Solid colors photograph best, and darker tones read
-          well against the directory layout. Coat and tie are required for
-          gentlemen aged 14 and older in The Main Clubhouse, so most members sit
-          in what they arrive in.</div>
+        <div class="answer">Coat and tie are required for gentlemen aged 14 and
+          older in The Main Clubhouse, and The Georgian Room sits within it.
+          <span class="fill">FILL — any wardrobe guidance from Julian</span></div>
       </details>
       <details>
         <summary>How long does it take?</summary>
-        <div class="answer">Twenty minutes is the scheduled slot. Most members
-          are finished sooner.</div>
+        <div class="answer"><span class="fill">FILL — sitting length. The earlier
+          "twenty minutes" was wrong and has been removed.</span></div>
       </details>
       <details>
         <summary>May I bring my family?</summary>
-        <div class="answer">Yes. Spouse, children, and grandchildren are all
-          welcome. Book one slot and note how many are attending.</div>
+        <div class="answer">Yes. Spouse, children, and grandchildren are every
+          one of them welcome in the frame.
+          <span class="fill">FILL — how to book a family slot</span></div>
       </details>
       <details>
         <summary>I photograph badly. Is this going to work?</summary>
@@ -528,20 +541,19 @@ section{padding-block:clamp(3rem,7vw,5.5rem)}
       </details>
       <details>
         <summary>Who sees the portrait?</summary>
-        <div class="answer">You do, first and alone. You select the frame that
-          goes on file. Nothing enters the directory without your approval.</div>
+        <div class="answer"><span class="fill">FILL — who reviews the frames,
+          who selects, and what reaches the directory</span></div>
       </details>
       <details>
         <summary>Is there a charge?</summary>
         <div class="answer">There is no sitting fee, and one complimentary 5x7
-          is included. Additional prints and files may be purchased at the
-          sitting, but nothing further is required of you.</div>
+          is included. <span class="fill">FILL — whether additional prints or
+          files may be purchased</span></div>
       </details>
       <details>
         <summary>What if I cannot make any of the times?</summary>
-        <div class="answer">Call the Front Desk and a time will be arranged.
-          Sittings are being scheduled around member availability wherever
-          the calendar allows.</div>
+        <div class="answer"><span class="fill">FILL — who to contact and how
+          alternate times are handled</span></div>
       </details>
     </div>
   </div>
