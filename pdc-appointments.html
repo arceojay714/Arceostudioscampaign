@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member Portraits | Piedmont Driving Club</title>
+<meta name="description" content="Piedmont Driving Club is rebuilding its member directory. Reserve a portrait sitting.">
+
+<!--
+================================================================================
+  PASTE-HERE INDEX  —  everything you need to fill in, in one list.
+  Each item below appears again as a comment at the exact spot in the page.
+
+  [A]  BLOCK 0   Adobe Fonts kit  ....... Proxima Nova + Utopia Std
+  [B]  BLOCK 1   Logo image  ............ PDC Crest
+  [C]  BLOCK 2   Hero image
+  [D]  BLOCK 5   Dates / times / location / fee
+  [E]  BLOCK 6   ACUITY SCHEDULING  ..... the booking embed or link
+  [F]  BLOCK 7   Gallery images  ........ six slots
+  [G]  BLOCK 10  Contact  ............... name, phone, email
+================================================================================
+-->
+
+<!--
+  [A] BLOCK 0 — TYPEFACES ------------------------------------------------------
+  Proxima Nova and Utopia Std are the two PDC brand faces. Both are licensed
+  through Adobe Fonts, so they need your kit. Paste the kit <link> below and
+  they will pick up automatically — the CSS already asks for them by name.
+
+  Until then the page falls back to Georgia (for Utopia) and the system sans
+  (for Proxima Nova), which hold the same proportions and will not look broken.
+-->
+<!-- <link rel="stylesheet" href="https://use.typekit.net/YOUR-KIT-ID.css"> -->
+
+<style>
+/* ============================================================================
+   PDC BRAND TOKENS — from the branding guide, rev. January 2022
+   ========================================================================== */
+:root{
+  /* Primary — the four Club colors */
+  --pdc-blue:   #004B87;   /* Pantone 301 C */
+  --pdc-black:  #000000;   /* Pantone Black 6 C */
+  --pdc-white:  #ffffff;
+  --pdc-gray:   #88898d;   /* Pantone Cool Gray 8 C */
+
+  /* Secondary — see note below before using these */
+  --pdc-navy:   #1B1D36;   /* Pantone 4146 C */
+  --pdc-gold:   #C1A01F;   /* Pantone 7753 C */
+
+  /* Working neutrals, tinted from the brand gray so nothing goes off-palette */
+  --paper:      #ffffff;
+  --wash:       #f5f5f6;
+  --wash-deep:  #ecedee;
+  --rule:       #dcdde0;
+  --ink:        #16181c;
+  --ink-soft:   #55575c;
+
+  --serif: "utopia-std", "Utopia Std", "Utopia", Georgia, "Times New Roman", serif;
+  --sans:  "proxima-nova", "Proxima Nova", -apple-system, BlinkMacSystemFont,
+           "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --measure: 34rem;
+  --gut: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* NOTE ON GOLD — the guide restricts the gold/dark-blue pair to the Horseshoe
+   logo (Golf and Athletics). It also permits gold as a foil on "invitations,
+   directories, brochures." This page is directory collateral, so gold appears
+   only as a hairline rule, never as type or fill. To drop it entirely, set
+   --pdc-gold to var(--pdc-gray) above and nothing else changes. */
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--serif);color:var(--pdc-blue);margin:0;font-weight:600;text-wrap:balance}
+h1{font-size:clamp(2rem,5.2vw,3.4rem);line-height:1.08;letter-spacing:-.015em}
+h2{font-size:clamp(1.45rem,3.2vw,2.1rem);line-height:1.18}
+h3{font-size:1.125rem;line-height:1.3}
+p{margin:0}
+a{color:var(--pdc-blue)}
+
+.wrap{max-width:68rem;margin:0 auto;padding-inline:var(--gut)}
+.narrow{max-width:var(--measure)}
+.stack{display:flex;flex-direction:column;gap:1rem}
+.stack-lg{display:flex;flex-direction:column;gap:1.75rem}
+section{padding-block:clamp(3rem,7vw,5.5rem)}
+.tint{background:var(--wash)}
+
+.eyebrow{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:600;color:var(--pdc-gray);margin-bottom:.85rem
+}
+.lede{font-size:clamp(1.05rem,2vw,1.24rem);line-height:1.55;color:var(--ink-soft)}
+
+/* Gold hairline — the foil analogue */
+.hair{width:3.5rem;height:2px;background:var(--pdc-gold);border:0;margin:0}
+
+/* --- Masthead ------------------------------------------------------------- */
+.masthead{border-bottom:1px solid var(--rule);padding-block:1.75rem;text-align:center}
+.crest{max-height:96px;width:auto;margin-inline:auto}
+/* Nameplate: the guide allows it centred BELOW the logo, or left of the logo.
+   Centred-below is used here. Do not reposition. */
+.nameplate{
+  font-family:var(--serif);color:var(--pdc-blue);
+  font-size:1.02rem;letter-spacing:.15em;text-transform:uppercase;
+  margin-top:.9rem
+}
+
+/* --- Image slots ---------------------------------------------------------- */
+/* A slot shows a labelled placeholder until a real image loads over it.
+   The inline onerror on each <img> hides the broken image so you never see a
+   torn-page icon — just the label telling you what belongs there. */
+.slot{
+  position:relative;background:var(--wash-deep);
+  display:grid;place-items:center;overflow:hidden;
+  border:1px solid var(--rule);
+}
+.slot::after{
+  content:attr(data-slot);
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pdc-gray);text-align:center;padding:1rem;line-height:1.7;
+  pointer-events:none;
+}
+.slot img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
+.slot.tall{aspect-ratio:4/5}
+.slot.wide{aspect-ratio:16/9}
+
+/* --- Hero ----------------------------------------------------------------- */
+.hero{display:grid;gap:clamp(2rem,5vw,3.5rem);align-items:center;padding-block:clamp(3rem,7vw,5rem)}
+@media(min-width:56rem){.hero{grid-template-columns:1.05fr .95fr}}
+
+/* --- Buttons -------------------------------------------------------------- */
+.btn{
+  display:inline-block;background:var(--pdc-blue);color:var(--pdc-white);
+  text-decoration:none;font-weight:600;font-size:.94rem;
+  letter-spacing:.09em;text-transform:uppercase;
+  padding:1rem 2rem;border:1px solid var(--pdc-blue);
+  transition:background .15s ease,color .15s ease;
+}
+.btn:hover,.btn:focus-visible{background:var(--pdc-navy);border-color:var(--pdc-navy)}
+.btn-ghost{background:transparent;color:var(--pdc-blue)}
+.btn-ghost:hover,.btn-ghost:focus-visible{background:var(--pdc-blue);color:var(--pdc-white)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+
+/* --- Included list -------------------------------------------------------- */
+.included{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(min-width:44rem){.included{grid-template-columns:1fr 1fr}}
+.included li{background:var(--paper);padding:1.4rem 1.5rem}
+.included h3{margin-bottom:.3rem}
+.included p{color:var(--ink-soft);font-size:.95rem}
+
+/* --- Steps ---------------------------------------------------------------- */
+.steps{list-style:none;counter-reset:step;margin:0;padding:0;display:grid;gap:1.5rem}
+@media(min-width:48rem){.steps{grid-template-columns:repeat(3,1fr);gap:2.25rem}}
+.steps li{counter-increment:step;padding-top:1.1rem;border-top:2px solid var(--pdc-blue)}
+.steps li::before{
+  content:"0" counter(step);
+  display:block;font-family:var(--serif);color:var(--pdc-gold);
+  font-size:.86rem;letter-spacing:.12em;margin-bottom:.5rem
+}
+.steps h3{margin-bottom:.35rem}
+.steps p{color:var(--ink-soft);font-size:.95rem}
+
+/* --- Detail bar ----------------------------------------------------------- */
+/* The vertical bar between items is the Club's own convention for separating
+   times, dates, and prices on one line. */
+.detail{
+  border-block:1px solid var(--rule);padding-block:1.6rem;
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:.6rem 1.4rem;text-align:center
+}
+.detail div{display:flex;align-items:center;gap:1.4rem}
+.detail div:not(:last-child)::after{content:"|";color:var(--pdc-gray)}
+.detail dt{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pdc-gray)}
+.detail dd{margin:0;font-family:var(--serif);color:var(--pdc-blue);font-size:1.05rem}
+
+/* --- Booking -------------------------------------------------------------- */
+.booking{background:var(--pdc-blue);color:var(--pdc-white)}
+.booking h2,.booking .eyebrow{color:var(--pdc-white)}
+.booking .lede{color:rgba(255,255,255,.82)}
+.booking .btn{background:var(--pdc-white);color:var(--pdc-blue);border-color:var(--pdc-white)}
+.booking .btn:hover,.booking .btn:focus-visible{background:var(--pdc-gold);border-color:var(--pdc-gold);color:var(--pdc-navy)}
+.embed{
+  background:var(--pdc-white);margin-top:2rem;padding:.5rem;
+  min-height:640px;display:grid;place-items:center
+}
+.embed iframe{width:100%;min-height:620px;border:0;display:block}
+.embed-note{
+  color:var(--pdc-gray);font-size:.72rem;letter-spacing:.15em;
+  text-transform:uppercase;text-align:center;padding:2.5rem 1.5rem;line-height:2
+}
+
+/* --- Gallery -------------------------------------------------------------- */
+.gallery{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+@media(min-width:48rem){.gallery{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+
+/* --- Quote ---------------------------------------------------------------- */
+.quote{border-left:2px solid var(--pdc-gold);padding-left:clamp(1.25rem,3vw,2rem)}
+.quote p{font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.6rem);line-height:1.4;color:var(--pdc-blue)}
+.quote cite{display:block;margin-top:.9rem;font-style:normal;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pdc-gray)}
+
+/* --- FAQ ------------------------------------------------------------------ */
+.faq{border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{
+  cursor:pointer;padding:1.25rem 2.5rem 1.25rem 0;position:relative;
+  font-family:var(--serif);font-size:1.08rem;color:var(--pdc-blue);
+  list-style:none
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:.25rem;top:50%;transform:translateY(-50%);
+  font-size:1.3rem;color:var(--pdc-gray);line-height:1
+}
+.faq details[open] summary::after{content:"–"}
+.faq summary:focus-visible{outline:2px solid var(--pdc-blue);outline-offset:2px}
+.faq .answer{padding:0 0 1.4rem;color:var(--ink-soft);max-width:var(--measure)}
+
+/* --- Footer --------------------------------------------------------------- */
+.foot{background:var(--pdc-navy);color:rgba(255,255,255,.72);font-size:.9rem}
+.foot a{color:var(--pdc-white)}
+.foot .inner{display:grid;gap:2rem;padding-block:3rem}
+@media(min-width:48rem){.foot .inner{grid-template-columns:1fr auto}}
+.foot strong{
+  color:var(--pdc-white);font-family:var(--serif);font-weight:600;
+  font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
+  display:block;margin-bottom:.6rem
+}
+.foot em{font-style:italic}
+.rule-gold{height:2px;background:var(--pdc-gold);border:0;margin:0}
+
+@media print{
+  .booking,.foot{background:var(--pdc-white)!important;color:var(--pdc-black)!important}
+  .booking h2,.booking .lede{color:var(--pdc-black)!important}
+  .slot{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     [B] BLOCK 1 — MASTHEAD
+     Swap the src below for the PDC Crest. The Crest is the primary logo and the
+     correct one for a communication of this kind (Club staff and management).
+     Use the graphic rendering in PDC blue — not the hand-sketched version, and
+     not the Horseshoe, which belongs to Golf and Athletics.
+     Request the file from the Communications Department.
+     ====================================================================== -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="slot" data-slot="[B] PDC Crest — PNG or SVG, PDC blue"
+         style="max-width:120px;aspect-ratio:1;margin-inline:auto;background:transparent;border:1px dashed var(--rule)">
+      <img src="REPLACE--pdc-crest.svg" alt="Piedmont Driving Club"
+           class="crest" onerror="this.style.display='none'">
+    </div>
+    <div class="nameplate">Piedmont Driving Club</div>
+  </div>
+</header>
+
+<!-- ==========================================================================
+     [C] BLOCK 2 — HERO
+     Headline is approved campaign copy. Title case, per the Club style guide.
+     ====================================================================== -->
+<div class="wrap">
+  <div class="hero">
+    <div class="stack-lg">
+      <div>
+        <p class="eyebrow">Member Portraits</p>
+        <h1>Your Name Is In It.<br>Your Face Is Not.</h1>
+      </div>
+      <hr class="hair">
+      <p class="lede">
+        Piedmont Driving Club is rebuilding its member directory this fall.
+        Your name is already on file, your account, your locker. One portrait
+        is the only thing still missing.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="#book">Reserve Your Sitting</a>
+        <a class="btn btn-ghost" href="#included">What Is Included</a>
+      </div>
+    </div>
+
+    <!-- Hero image. A single strong portrait works better here than a group. -->
+    <div class="slot tall" data-slot="[C] Hero portrait — vertical 4:5">
+      <img src="REPLACE--hero.jpg" alt="" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     BLOCK 3 — WHAT IS INCLUDED
+     ====================================================================== -->
+<section class="tint" id="included">
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">The Sitting</p>
+      <h2>What Is Included</h2>
+    </div>
+    <ul class="included">
+      <li>
+        <h3>A Directed Sitting</h3>
+        <p>Twenty minutes with your Photographer, Julian. He directs the whole
+           way through — where to stand, where to look, what to do with your hands.</p>
+      </li>
+      <li>
+        <h3>Retouching</h3>
+        <p>Every frame you choose is retouched by hand before it reaches you or
+           the directory.</p>
+      </li>
+      <li>
+        <h3>A Complimentary 5x7</h3>
+        <p>One finished print to take home, included with every sitting.</p>
+      </li>
+      <li>
+        <h3>Your Directory Portrait</h3>
+        <p>Your selected frame is added to the Club directory. Nothing is
+           published without your approval.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 4 — HOW IT WORKS
+     ====================================================================== -->
+<section>
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">Three Steps</p>
+      <h2>How It Works</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>Choose Your Time</h3>
+        <p>Pick any open slot below. Sittings run back to back, so the time you
+           choose is the time you are seen.</p>
+      </li>
+      <li>
+        <h3>Sit for Your Portrait</h3>
+        <p>Arrive as you are. Julian handles the rest. Most members are finished
+           inside half an hour.</p>
+      </li>
+      <li>
+        <h3>Review and Select</h3>
+        <p>You see every frame before anyone else does, and you choose the one
+           that goes on file.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     [D] BLOCK 5 — SESSION DETAIL BAR
+     Fill in the four values below. Formats follow the Club style guide:
+       dates  — no ordinals, month spelled out, en dash with spaces
+                e.g. "October 11 - 14"  (not "October 11th-14th")
+       times  — lowercase, with periods, no spaces
+                e.g. "9 a.m. - 5 p.m."  |  "10:30 a.m."
+       room   — a Main Clubhouse room name, capitalized
+                e.g. the Byrd Room, the Walker Room, the Georgian Room
+     ====================================================================== -->
+<div class="wrap">
+  <dl class="detail">
+    <div><dt>Dates</dt><dd>REPLACE — e.g. October 11 - 14</dd></div>
+    <div><dt>Times</dt><dd>REPLACE — e.g. 9 a.m. - 5 p.m.</dd></div>
+    <div><dt>Location</dt><dd>REPLACE — e.g. The Byrd Room</dd></div>
+    <div><dt>Sitting Fee</dt><dd>None</dd></div>
+  </dl>
+</div>
+
+<!-- ==========================================================================
+     [E] BLOCK 6 — ACUITY SCHEDULING  ← the main insertion point
+     ====================================================================== -->
+<section class="booking" id="book">
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">Reserve</p>
+      <h2>Choose Your Time</h2>
+      <p class="lede" style="margin-top:1rem">
+        Sittings are reserved in the order they are booked. If nothing suits your
+        day, call the Front Desk and a time will be arranged for you.
+      </p>
+    </div>
+
+    <div class="embed">
+      <!--
+        PASTE YOUR ACUITY EMBED HERE, replacing this whole comment block and the
+        .embed-note div directly beneath it.
+
+        OPTION 1 — inline embed (recommended; members never leave the page).
+        From Acuity: Client Scheduling Page → Customize Appearance → Embed.
+        It looks like this:
+
+        <iframe src="https://app.acuityscheduling.com/schedule.php?owner=OWNER_ID"
+                title="Schedule an appointment" width="100%" height="800"
+                frameborder="0"></iframe>
+        <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+
+        To open one specific appointment type instead of the full menu, append
+        &appointmentType=TYPE_ID to the src.
+
+        OPTION 2 — button out to Acuity. Delete the .embed wrapper entirely and
+        use this in its place:
+
+        <div class="btn-row"><a class="btn" href="YOUR-ACUITY-URL">Book a Sitting</a></div>
+      -->
+      <p class="embed-note">
+        [E] Acuity Scheduling embed goes here<br>
+        see the comment in the source directly above this line
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     [F] BLOCK 7 — GALLERY
+     Six slots. Replace each src with an image URL from your email gallery.
+     Keep the alt text — it is what a member using a screen reader hears, and
+     empty alt on a portrait grid reads as six unlabelled blanks.
+     Portraits crop to 4:5. If a source file is landscape it will centre-crop,
+     so check faces are not cut.
+     ====================================================================== -->
+<section>
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">Recent Work</p>
+      <h2>Portraits On File</h2>
+    </div>
+    <div class="gallery">
+      <div class="slot tall" data-slot="[F] Gallery 01">
+        <img src="REPLACE--gallery-01.jpg" alt="Member portrait" onerror="this.style.display='none'">
+      </div>
+      <div class="slot tall" data-slot="[F] Gallery 02">
+        <img src="REPLACE--gallery-02.jpg" alt="Member portrait" onerror="this.style.display='none'">
+      </div>
+      <div class="slot tall" data-slot="[F] Gallery 03">
+        <img src="REPLACE--gallery-03.jpg" alt="Member portrait" onerror="this.style.display='none'">
+      </div>
+      <div class="slot tall" data-slot="[F] Gallery 04">
+        <img src="REPLACE--gallery-04.jpg" alt="Family portrait" onerror="this.style.display='none'">
+      </div>
+      <div class="slot tall" data-slot="[F] Gallery 05">
+        <img src="REPLACE--gallery-05.jpg" alt="Member portrait" onerror="this.style.display='none'">
+      </div>
+      <div class="slot tall" data-slot="[F] Gallery 06">
+        <img src="REPLACE--gallery-06.jpg" alt="Member portrait" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 8 — REASSURANCE
+     This is the block that books the members who think they photograph badly.
+     ====================================================================== -->
+<section class="tint">
+  <div class="wrap">
+    <div class="quote narrow">
+      <p>Almost everyone says they photograph badly. Directing you is Julian's
+         job, not yours.</p>
+      <cite>Arceo Studio Collective</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 9 — FAMILY
+     ====================================================================== -->
+<section>
+  <div class="wrap stack-lg">
+    <div class="narrow stack">
+      <p class="eyebrow">Family Sittings</p>
+      <h2>Every Generation In One Frame</h2>
+      <p class="lede">
+        Spouse, children, and grandchildren are every one of them welcome in the
+        frame. Book a single slot for the family and note the number attending
+        when you reserve.
+      </p>
+    </div>
+    <div class="slot wide" data-slot="[F] Family portrait — landscape 16:9">
+      <img src="REPLACE--family.jpg" alt="A family portrait sitting" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 10 — FAQ
+     ====================================================================== -->
+<section class="tint">
+  <div class="wrap stack-lg">
+    <div class="narrow">
+      <p class="eyebrow">Before You Come</p>
+      <h2>Questions</h2>
+    </div>
+    <div class="faq narrow" style="max-width:44rem">
+      <details>
+        <summary>What should I wear?</summary>
+        <div class="answer">Solid colors photograph best, and darker tones read
+          well against the directory layout. Coat and tie are required for
+          gentlemen aged 14 and older in The Main Clubhouse, so most members sit
+          in what they arrive in.</div>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <div class="answer">Twenty minutes is the scheduled slot. Most members
+          are finished sooner.</div>
+      </details>
+      <details>
+        <summary>May I bring my family?</summary>
+        <div class="answer">Yes. Spouse, children, and grandchildren are all
+          welcome. Book one slot and note how many are attending.</div>
+      </details>
+      <details>
+        <summary>I photograph badly. Is this going to work?</summary>
+        <div class="answer">It is the most common thing members say, and it is
+          the part you are not responsible for. Julian directs the sitting —
+          posture, angle, and expression are his job.</div>
+      </details>
+      <details>
+        <summary>Who sees the portrait?</summary>
+        <div class="answer">You do, first and alone. You select the frame that
+          goes on file. Nothing enters the directory without your approval.</div>
+      </details>
+      <details>
+        <summary>Is there a charge?</summary>
+        <div class="answer">There is no sitting fee, and one complimentary 5x7
+          is included. Additional prints and files may be purchased at the
+          sitting, but nothing further is required of you.</div>
+      </details>
+      <details>
+        <summary>What if I cannot make any of the times?</summary>
+        <div class="answer">Call the Front Desk and a time will be arranged.
+          Sittings are being scheduled around member availability wherever
+          the calendar allows.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BLOCK 11 — CLOSING CALL TO ACTION
+     ====================================================================== -->
+<section>
+  <div class="wrap">
+    <div class="narrow stack-lg" style="text-align:center;margin-inline:auto">
+      <div>
+        <p class="eyebrow">The Directory</p>
+        <h2>A Portrait On File Is All It Takes</h2>
+      </div>
+      <hr class="hair" style="margin-inline:auto">
+      <p class="lede">Staff greet you by name from day one. This is the part that
+         lets the rest of the membership do the same.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn" href="#book">Reserve Your Sitting</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule-gold">
+
+<!-- ==========================================================================
+     [G] BLOCK 12 — FOOTER
+     Phone format per the style guide: figures and hyphens, never periods.
+       404-875-2565   and with an extension:  404-875-2565, ext. 285
+     Email in body text is italicized in brackets, which is why the address
+     below is set that way.
+     Web addresses drop "http://" and "www."
+     ====================================================================== -->
+<footer class="foot">
+  <div class="wrap inner">
+    <div>
+      <strong>Piedmont Driving Club</strong>
+      1215 Piedmont Avenue NE<br>
+      Atlanta, Georgia 30309<br>
+      <span style="display:inline-block;margin-top:.6rem">
+        Front Desk <a href="tel:REPLACE">REPLACE — 000-000-0000</a>
+      </span>
+    </div>
+    <div>
+      <strong>Portraits By</strong>
+      Arceo Studio Collective<br>
+      <a href="https://arceostudiocollective.com">arceostudiocollective.com</a><br>
+      <span style="display:inline-block;margin-top:.6rem">
+        Questions, contact REPLACE — Name, Title
+        <em>[REPLACE--email@drivingclub.com]</em>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
