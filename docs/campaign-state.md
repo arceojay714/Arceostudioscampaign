@@ -83,6 +83,15 @@ Code sessions (403 at the CONNECT tunnel). Neither `/appointments` nor
 truth from inside a session. Anything from those pages — copy, image URLs, the
 Acuity link — has to be pasted into the chat by hand.
 
+## Appointments page — pending edits (2026-09-01)
+
+PDC's Acuity calendar went live around August 27 (password protection removed;
+member bookings confirmed by Lindsey Jordan). Sarah Lanier asked on September 1
+for the appointments page to drop the passcode language and show PDC as open
+like the other clubs, and Willoughby Golf Club (Stuart, FL, spring 2027) needs
+its card re-added. Full edit spec: `appointments-page-edits-2026-09-01.md`.
+Must be clicked in by hand in Squarespace — see the egress limitation below.
+
 ## Open threads
 
 - **Booking pages splitting** to `/appointments/olympia` and `/appointments/kent`.
