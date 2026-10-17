@@ -35,6 +35,13 @@ Meta shows a "Publish draft items?" prompt on closing the editor. Press **Close*
 - CTA is always **Book Now**. Meta's button text is a fixed dropdown; the COPY_DECK button strings (e.g. "ADD YOUR PORTRAIT") live *inside the image art*, so the two never need to match.
 - URL is always `https://arceostudiocollective.com/appointments`.
 
+## Client gallery
+
+Our own custom-built online gallery (not Pixieset/ShootProof/etc.): **https://gallery.arceoclubs.com**
+
+- Its code is not in this repo. Before changing it, find its repo and attach it to the session.
+- Planned feature: **"Collections By Julian"**, a same-day bundled price held for two weeks while a client's gallery is open. Bundle price + shipping + tax; digitals do not count toward shipping. Multiple collections per gallery. Client still texts/emails Julian to finalize shots and print crops; digitals are released into the gallery after selections.
+
 ## Where the detail lives
 
 - `docs/meta-ad-build-guide.md` — all 11 ads, every field, paste-ready
