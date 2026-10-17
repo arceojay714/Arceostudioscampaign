@@ -1,7 +1,9 @@
 # Collections By Julian: design draft (not built)
 
 Gallery repo: `arceojay714/arceo-gallery` (Flask, `server.py`, `gallery.html`, `frames.html`, `checkout.html`, `catalog.py`).
-Status: plan only. Nothing in the gallery has been changed.
+Status: BUILT on branch `claude/admiring-darwin-zf8mt4` of `arceojay714/arceo-gallery` (not merged, not deployed).
+The gallery repo's CLAUDE.md section "Collections By Julian" is now the source of truth; this file is the original draft.
+Decisions (Julian, Oct 17 2026): held collections vanish on reopen/close but the "speak to Julian about getting a collection together" ask stays; show a la carte value; collections may include framed pieces.
 
 ## Naming collision to avoid
 "collections" already means two things in the gallery code: the photo tabs (Printed / Lettered / Pinned / Remaining,
