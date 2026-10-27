@@ -1,0 +1,102 @@
+<!--
+================================================================================
+  PAGE SCHEMA  —  /private-clubs
+
+  WHERE IT GOES
+    Squarespace: on the /private-clubs page, open Page Settings → Advanced →
+    Page Header Code Injection and paste this file. No Code Injection on your
+    plan? Use a Code Block anywhere on that page.
+
+  RULES
+    · The FAQ answers here must match the visible answers on the page
+      (site/pages/private-clubs.md) word for word. Google ignores FAQ markup
+      that doesn't match the page, and AI tools read both.
+    · Google shows FAQ rich results only for a few authoritative sites, so
+      don't expect a dropdown in search results. The markup is here because it
+      gives AI crawlers clean question-and-answer pairs to quote.
+    · Replace every FILL, or delete that question from BOTH the page and this
+      file. Then paste it into https://validator.schema.org.
+================================================================================
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://arceostudiocollective.com/private-clubs#service",
+      "name": "Member Portrait Program for Private Clubs",
+      "serviceType": "Member directory portrait photography",
+      "url": "https://arceostudiocollective.com/private-clubs",
+      "provider": { "@id": "https://arceostudiocollective.com/#organization" },
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Private clubs: country, golf, city, yacht, and athletic clubs"
+      },
+      "description": "Arceo Studio Collective runs on-site member portrait programs for private clubs. Julian Arceo sets up in a private room at your clubhouse and photographs members against a consistent hand-painted backdrop. Your club receives a directory portrait of each member for its membership roster, point-of-sale system, and staff training directory. Members pay no sitting fee.",
+      "offers": {
+        "@type": "Offer",
+        "description": "No sitting fee for members. A complimentary 5x7 and a complimentary club-edit retouch. Optional print and digital packages from $150, with no minimums."
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://arceostudiocollective.com/private-clubs#faq",
+      "url": "https://arceostudiocollective.com/private-clubs",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a member portrait program cost the club?",
+          "acceptedAnswer": { "@type": "Answer", "text": "FILL" }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the club need to provide?",
+          "acceptedAnswer": { "@type": "Answer", "text": "FILL" }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does each sitting take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Between 20 and 120 minutes, depending on the session style and how many people are in the frame. Business and Branding sittings are the shortest. Family and Legacy sittings run longest because the review happens in the same visit." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do members have to buy anything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. There is no sitting fee, and the club-edit retouch of each directory portrait is complimentary. Prints and digital files are optional, with packages from $150 and no minimums." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do the portraits go?",
+          "acceptedAnswer": { "@type": "Answer", "text": "One directory portrait per member goes to the club for its membership album, point-of-sale system, and staff training directory. The rest of the sitting belongs to the member." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do members book?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Through a booking page made for your club, or by form, email, text, or phone. Each member receives a confirmation email and a courtesy text offering a consultation before the sitting." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can families be photographed together?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Members choose the Family and Legacy style when they book, and spouses, children, and grandchildren are all welcome in the frame." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the portraits retouched?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every directory portrait gets a complimentary club-edit that softens unwanted details but keeps the member recognizable to staff. Members can buy further retouching for personal use." }
+        },
+        {
+          "@type": "Question",
+          "name": "What file formats does the club receive?",
+          "acceptedAnswer": { "@type": "Answer", "text": "FILL" }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do you work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "FILL: home base, and the states or regions you travel to." }
+        }
+      ]
+    }
+  ]
+}
+</script>

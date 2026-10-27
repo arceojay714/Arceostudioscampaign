@@ -1,0 +1,91 @@
+<!--
+================================================================================
+  SITEWIDE STRUCTURED DATA  —  Arceo Studio Collective + Julian Arceo
+
+  WHERE IT GOES
+    Squarespace: search the admin for "Code Injection" and paste this whole
+    file into the HEADER box, so it loads on every page. If your plan lacks
+    Code Injection, paste it into a Code Block on the home page instead.
+
+  WHAT IT DOES
+    Tells Google and AI crawlers, in machine-readable form, that the studio
+    and the person are two linked entities, and which profiles belong to each
+    ("sameAs"). Google needs these links before it can build a knowledge panel.
+
+  BEFORE PASTING
+    1. Replace every "FILL-..." value from docs/visibility/entity-facts.md.
+    2. If you don't have one of the profiles, delete that whole line, then
+       remove the comma that ends the line above it if it is now the last
+       entry in its list. JSON fails on a trailing comma.
+    3. Search this file for "FILL". There must be none left.
+    4. Paste it into https://validator.schema.org and fix anything red.
+
+  The @id values are fixed identifiers, not links. Don't change them. The
+  page-level schema files point to them.
+================================================================================
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://arceostudiocollective.com/#organization",
+      "name": "Arceo Studio Collective",
+      "url": "https://arceostudiocollective.com/",
+      "email": "julian@arceostudiocollective.com",
+      "telephone": "FILL-phone",
+      "logo": "FILL-square-logo-url",
+      "foundingDate": "FILL-year",
+      "founder": { "@id": "https://arceostudiocollective.com/julian-arceo#person" },
+      "description": "Arceo Studio Collective runs member portrait programs for private clubs. Julian Arceo photographs members at their own clubhouse against a consistent hand-painted backdrop, and the club receives a directory portrait of each member for its membership roster, point-of-sale system, and staff training directory. Members pay no sitting fee.",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "knowsAbout": [
+        "Member portrait programs for private clubs",
+        "Private club member directories",
+        "Member recognition",
+        "Staff training for member recognition",
+        "Portrait photography"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/thearceostudio/",
+        "FILL-facebook-page-url",
+        "FILL-linkedin-company-page-url",
+        "FILL-google-business-profile-share-link",
+        "FILL-youtube-channel-url",
+        "FILL-crunchbase-organization-url"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://arceostudiocollective.com/julian-arceo#person",
+      "name": "Julian Arceo",
+      "givenName": "Julian",
+      "familyName": "Arceo",
+      "jobTitle": "Owner and Head Photographer",
+      "worksFor": { "@id": "https://arceostudiocollective.com/#organization" },
+      "url": "https://arceostudiocollective.com/julian-arceo",
+      "image": "FILL-headshot-url",
+      "email": "julian@arceostudiocollective.com",
+      "description": "Julian Arceo is the owner and head photographer of Arceo Studio Collective, which runs member portrait programs for private clubs.",
+      "knowsAbout": [
+        "Portrait photography",
+        "Member portrait programs for private clubs",
+        "Member recognition",
+        "Private club member directories"
+      ],
+      "sameAs": [
+        "FILL-linkedin-personal-profile-url",
+        "FILL-crunchbase-person-url"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arceostudiocollective.com/#website",
+      "name": "Arceo Studio Collective",
+      "url": "https://arceostudiocollective.com/",
+      "publisher": { "@id": "https://arceostudiocollective.com/#organization" }
+    }
+  ]
+}
+</script>

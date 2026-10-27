@@ -39,6 +39,9 @@ Meta shows a "Publish draft items?" prompt on closing the editor. Press **Close*
 
 - `docs/meta-ad-build-guide.md` — all 11 ads, every field, paste-ready
 - `docs/campaign-state.md` — what's built, what's open
+- `docs/visibility/` — Google knowledge panel + AI search work. `entity-facts.md` is the
+  source of truth for every bio, profile, and schema block; `plan.md` is the checklist.
+  Paste-ready site pages and JSON-LD live in `site/`.
 
 ## Pixel
 

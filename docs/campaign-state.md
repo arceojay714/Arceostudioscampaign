@@ -93,3 +93,7 @@ Acuity link — has to be pasted into the chat by hand.
   (`URL contains /appointments/piedmont`).
 - **`@thearceostudio`** isn't connected to the business — Instagram runs under the Facebook Page identity.
 - **Google Ads import** still pending: CSV ready, needs a 1:1 logo.
+- **Search and AI visibility** (knowledge panels for Julian and the studio, AI-search
+  recommendations to private clubs) started 27 October 2026. See `docs/visibility/plan.md`.
+  Blocked on the FILL items in `docs/visibility/entity-facts.md`. Connecting `@thearceostudio`
+  to the business portfolio is step 11 there, and it also fixes the Instagram identity issue above.
