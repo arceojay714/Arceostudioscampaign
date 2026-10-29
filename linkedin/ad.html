@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arceo Studio Collective — LinkedIn ad</title>
+<!--
+  LinkedIn single-image ad for club GMs / membership directors.
+  Render with:  node linkedin/render.js
+  Formats are chosen by the URL hash: #wide (1200x627) or #square (1200x1200).
+
+  PHOTOS: the yearbook tiles ship with painted-color fills and NO people.
+  To use a photo, drop a file at linkedin/photos/<name>.jpg (see the <img>
+  tags below). Only use a photo you hold written advertising consent for
+  from every person in it. The onerror handler hides any missing file, same
+  convention as pdc-appointments.html.
+-->
+<style>
+  :root{
+    --ink:#131c2b;
+    --ink-2:#1b283c;
+    --ivory:#f3ede2;
+    --paper:#fbf8f2;
+    --brass:#c4a06a;
+    --mute:#a9b4c3;
+    --serif:"Bitstream Charter","Liberation Serif",Georgia,serif;
+    --sans:"Inter","Liberation Sans",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%}
+  body{background:var(--ink);color:var(--ivory);font-family:var(--sans);overflow:hidden;
+       -webkit-font-smoothing:antialiased}
+
+  .wide{--w:1200px;--h:627px}
+  .square{--w:1200px;--h:1200px}
+
+  .ad{position:relative;width:var(--w);height:var(--h);overflow:hidden;
+      background:
+        radial-gradient(900px 600px at 82% 55%, #25364f 0%, transparent 70%),
+        linear-gradient(160deg, var(--ink-2) 0%, var(--ink) 65%);}
+
+  /* ---------- copy column ---------- */
+  .copy{position:absolute;display:flex;flex-direction:column}
+  .wide .copy{left:56px;top:48px;width:560px;height:531px}
+  .square .copy{left:72px;top:68px;width:1056px}
+
+  .mark{font-size:15px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--brass)}
+  .mark span{color:var(--mute);font-weight:500}
+  .wide .mark span{display:none}
+  .rule{width:56px;height:2px;background:var(--brass);margin:22px 0 26px}
+
+  h1{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;line-height:1.07;color:var(--ivory)}
+  .wide h1{font-size:52px}
+  .square h1{font-size:88px;max-width:980px}
+  h1 em{font-style:italic;color:var(--brass);font-weight:400}
+
+  .sub{color:#d6dbe3;line-height:1.5;margin-top:22px}
+  .wide .sub{font-size:19px;max-width:500px}
+  .square .sub{font-size:30px;max-width:880px;margin-top:30px}
+
+  .points{margin-top:auto;display:flex;flex-direction:column;gap:11px;list-style:none}
+  .square .points{margin-top:36px;flex-direction:row;gap:34px}
+  .points li{display:flex;align-items:center;gap:11px;font-size:16px;font-weight:600;color:var(--ivory);letter-spacing:.01em}
+  .square .points li{font-size:23px}
+  .points li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brass);flex:none}
+
+  /* ---------- yearbook spread ---------- */
+  .book{position:absolute;display:flex;border-radius:4px;
+        box-shadow:0 34px 60px -18px rgba(0,0,0,.65), 0 2px 0 rgba(255,255,255,.04) inset}
+  .wide .book{right:52px;top:62px;width:520px;height:503px}
+  .square .book{left:72px;right:72px;top:596px;height:526px}
+
+  .page{position:relative;flex:1;background:var(--paper);color:#26303f;padding:26px 24px 22px}
+  .page.l{border-radius:4px 0 0 4px;
+          background:linear-gradient(90deg,var(--paper) 78%, #e5ddcd 100%)}
+  .page.r{border-radius:0 4px 4px 0;
+          background:linear-gradient(270deg,var(--paper) 78%, #e5ddcd 100%)}
+
+  .page.l{display:flex;flex-direction:column}
+  .vol{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#8b7a5c;font-weight:600}
+  .title{font-family:var(--serif);font-weight:700;color:#18222f;line-height:1.05;margin-top:12px}
+  .wide .title{font-size:34px}
+  .square .title{font-size:50px}
+  .title em{font-weight:400;font-style:italic;color:#8b6a30}
+  .blurb{font-family:var(--serif);font-size:14px;line-height:1.55;color:#4a5260;margin-top:14px}
+  .square .blurb{font-size:19px}
+  .toc{margin-top:auto;list-style:none;border-top:1px solid #d9d0be;padding-top:12px}
+  .toc li{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+          color:#6b6252;padding:5px 0}
+  .square .toc li{font-size:14px;padding:7px 0}
+  .toc li b{font-weight:500;color:#9a8a68}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:11px;height:100%}
+  .tile{position:relative;overflow:hidden;border-radius:2px;background:#bfc8d2}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tile::after{content:"";position:absolute;inset:0;
+               background:linear-gradient(180deg,rgba(15,22,34,0) 52%,rgba(15,22,34,.62) 100%)}
+  .tile .cap{position:absolute;left:10px;bottom:8px;z-index:2;font-family:var(--serif);font-style:italic;
+             font-size:14px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+  .square .tile .cap{font-size:19px;left:13px;bottom:11px}
+
+  /* painted-color fills: no people, no real clients */
+  .t1{background:radial-gradient(120% 90% at 20% 15%,#9fb0c4 0%,transparent 60%),linear-gradient(145deg,#52677f,#7e93a8)}
+  .t2{background:radial-gradient(110% 90% at 80% 20%,#d9c3a0 0%,transparent 62%),linear-gradient(150deg,#a98a64,#c7ae88)}
+  .t3{background:radial-gradient(110% 90% at 25% 80%,#b9c8b3 0%,transparent 60%),linear-gradient(140deg,#667f6f,#93a995)}
+  .t4{background:radial-gradient(110% 90% at 75% 75%,#c9b0a4 0%,transparent 62%),linear-gradient(150deg,#8d6c63,#b3978c)}
+  .t5{background:radial-gradient(120% 90% at 30% 25%,#b5b2cc 0%,transparent 60%),linear-gradient(145deg,#6f6c90,#9692b3)}
+  .t6{background:radial-gradient(110% 90% at 70% 30%,#a9c3c3 0%,transparent 62%),linear-gradient(150deg,#587d80,#86a5a6)}
+</style>
+</head>
+<body>
+<div class="ad" id="ad">
+
+  <div class="copy">
+    <div class="mark">Arceo Studio Collective <span>&nbsp;·&nbsp; Portrait residencies</span></div>
+    <div class="rule"></div>
+    <h1>A portrait residency that costs your club <em>nothing.</em></h1>
+    <p class="sub">Private sessions your members book themselves, and a yearbook the whole club can hold.</p>
+    <ul class="points">
+      <li>No cost to the club</li>
+      <li>No sitting fee for members</li>
+      <li>Complimentary 5x7 for every group</li>
+    </ul>
+  </div>
+
+  <div class="book">
+    <section class="page l">
+      <div class="vol">The Club Yearbook</div>
+      <div class="title">Every committee.<br>Every family.<br><em>One book.</em></div>
+      <p class="blurb">A small, magazine-style history of your club that members can flip through in the clubhouse.</p>
+      <ul class="toc">
+        <li>Board &amp; committees <b>01</b></li>
+        <li>Member clubs <b>02</b></li>
+        <li>Couples &amp; families <b>03</b></li>
+      </ul>
+    </section>
+    <section class="page r">
+      <div class="grid">
+        <div class="tile t1"><img src="photos/yearbook-board.jpg" alt="" onerror="this.remove()"><span class="cap">The Board</span></div>
+        <div class="tile t2"><img src="photos/yearbook-committees.jpg" alt="" onerror="this.remove()"><span class="cap">Committees</span></div>
+        <div class="tile t3"><img src="photos/yearbook-member-clubs.jpg" alt="" onerror="this.remove()"><span class="cap">Member clubs</span></div>
+        <div class="tile t4"><img src="photos/yearbook-couples.jpg" alt="" onerror="this.remove()"><span class="cap">Couples</span></div>
+        <div class="tile t5"><img src="photos/yearbook-families.jpg" alt="" onerror="this.remove()"><span class="cap">Families</span></div>
+        <div class="tile t6"><img src="photos/yearbook-staff.jpg" alt="" onerror="this.remove()"><span class="cap">Staff</span></div>
+      </div>
+    </section>
+  </div>
+
+</div>
+<script>
+  // #wide (default) or #square
+  document.body.className = location.hash === '#square' ? 'square' : 'wide';
+</script>
+</body>
+</html>
